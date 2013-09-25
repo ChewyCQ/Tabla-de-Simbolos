@@ -141,7 +141,7 @@
               <Font name="Tahoma" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Agregar"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="toolTipText" type="java.lang.String" value="Agrega el dato a la tabla."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAgregarNodoActionPerformed"/>
@@ -164,6 +164,7 @@
                     <Column editable="false" title="# de colisiones" type="java.lang.Object"/>
                   </Table>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Seleccione la fila para mostrar abajo."/>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="1">
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
@@ -259,7 +260,7 @@
               <Font name="Tahoma" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Asignar"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="toolTipText" type="java.lang.String" value="Crea el vector del tama&#xf1;o seleccionado."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAsignarVectorActionPerformed"/>
@@ -323,6 +324,7 @@
         <Component class="javax.swing.JButton" name="jBotonSiguiente">
           <Properties>
             <Property name="text" type="java.lang.String" value="Siguiente"/>
+            <Property name="toolTipText" type="java.lang.String" value="Muestra el siguiente dato en la lista seleccionada en la tabla."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBotonSiguienteActionPerformed"/>

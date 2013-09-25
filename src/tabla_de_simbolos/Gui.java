@@ -75,7 +75,7 @@ public class Gui extends javax.swing.JFrame {
 
         jAgregarNodo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jAgregarNodo.setText("Agregar");
-        jAgregarNodo.setToolTipText("");
+        jAgregarNodo.setToolTipText("Agrega el dato a la tabla.");
         jAgregarNodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jAgregarNodoActionPerformed(evt);
@@ -105,6 +105,7 @@ public class Gui extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTabla.setToolTipText("Seleccione la fila para mostrar abajo.");
         jTabla.getTableHeader().setReorderingAllowed(false);
         jTabla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -153,7 +154,7 @@ public class Gui extends javax.swing.JFrame {
 
         jAsignarVector.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jAsignarVector.setText("Asignar");
-        jAsignarVector.setToolTipText("");
+        jAsignarVector.setToolTipText("Crea el vector del tamaño seleccionado.");
         jAsignarVector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jAsignarVectorActionPerformed(evt);
@@ -192,6 +193,7 @@ public class Gui extends javax.swing.JFrame {
         jLabelDato.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jBotonSiguiente.setText("Siguiente");
+        jBotonSiguiente.setToolTipText("Muestra el siguiente dato en la lista seleccionada en la tabla.");
         jBotonSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBotonSiguienteActionPerformed(evt);
