@@ -7,12 +7,10 @@ package tabla_de_simbolos;
 public class Nodo {
     private String dato;
     private Nodo siguiente;
-    private int hash;
 
     public Nodo(String dato) {
         this.dato = dato;
         this.siguiente = null;
-        this.hash = Hash.algoritmo1(dato);
     }
 
     public String getDato() {
@@ -25,9 +23,5 @@ public class Nodo {
 
     public void setSiguiente(Nodo siguiente) {
         this.siguiente = siguiente;
-    }
-
-    public int getHash() {
-        return hash;
     }
 }
