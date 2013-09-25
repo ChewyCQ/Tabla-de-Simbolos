@@ -1,5 +1,7 @@
 package tabla_de_simbolos;
 
+import java.util.Scanner;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 /**
@@ -9,7 +11,7 @@ import javax.swing.table.TableModel;
 public class Gui extends javax.swing.JFrame {
     
     private Tabla_de_Simbolos tablaSimbolos;
-    private TableModel tabla;
+    private DefaultTableModel tabla;
 
     /**
      * Creates new form Gui
@@ -17,11 +19,19 @@ public class Gui extends javax.swing.JFrame {
     public Gui() {
         initComponents();
         jPanelTabla.setVisible(false);
+        tabla = (DefaultTableModel) jTabla.getModel();
     }
     
     //Funciones
-    private void crearVector(){
-        
+    private void actualizarTabla(){
+        int n = 0;
+        for (Nodo nodo : tablaSimbolos.getCasillas()){
+            if (nodo != null){
+                tabla.setValueAt(nodo.getDato(), n, 0);
+                tabla.setValueAt(tablaSimbolos.contarColisionesCasilla(nodo) + 1, n, 3);
+            }
+            n++;
+        }
     }
 
     /**
@@ -47,6 +57,7 @@ public class Gui extends javax.swing.JFrame {
         jAsignarVector = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tabla de Simbolos");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Tabla de Simbolos");
@@ -60,6 +71,7 @@ public class Gui extends javax.swing.JFrame {
 
         jAgregarNodo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jAgregarNodo.setText("Agregar");
+        jAgregarNodo.setToolTipText("");
         jAgregarNodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jAgregarNodoActionPerformed(evt);
@@ -68,16 +80,7 @@ public class Gui extends javax.swing.JFrame {
 
         jTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Simbolo", "Tipo", "Hash", "*"
@@ -98,7 +101,7 @@ public class Gui extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTabla.setColumnSelectionAllowed(true);
+        jTabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTabla);
         jTabla.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
@@ -134,13 +137,14 @@ public class Gui extends javax.swing.JFrame {
 
         jPanelNumeroCasillas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(10), Integer.valueOf(1), null, Integer.valueOf(1)));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Tamaño del Vector");
 
         jAsignarVector.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jAsignarVector.setText("Asignar");
+        jAsignarVector.setToolTipText("");
         jAsignarVector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jAsignarVectorActionPerformed(evt);
@@ -205,14 +209,21 @@ public class Gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jAgregarNodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAgregarNodoActionPerformed
-        tablaSimbolos.insertarNodo(jString.getText());
-        //actualizarTabla
+        if (!jString.getText().isEmpty()){
+            tablaSimbolos.insertarNodo(jString.getText());
+            actualizarTabla();
+            jString.setText(null);
+        }
+        jString.requestFocus();
     }//GEN-LAST:event_jAgregarNodoActionPerformed
 
     private void jAsignarVectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAsignarVectorActionPerformed
         tablaSimbolos = new Tabla_de_Simbolos((int)jSpinner1.getValue());
         jPanelTabla.setVisible(true);
         jPanelNumeroCasillas.setVisible(false);
+        for (int n = 0; n < tablaSimbolos.getCasillas().length; n++){
+            tabla.addRow(new Object[] {});
+        }
     }//GEN-LAST:event_jAsignarVectorActionPerformed
 
     /**

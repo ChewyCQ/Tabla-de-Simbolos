@@ -10,14 +10,19 @@ public class Tabla_de_Simbolos {
 
     public Tabla_de_Simbolos(int numeroCasillas) {
         casillas = new Nodo[numeroCasillas];
+        
     }
 
     public Nodo[] getCasillas() {
         return casillas;
     }
     
+    public int algoritmoHash1 (String string){
+        return Math.round(((float) string.charAt(0) + (float) string.charAt(string.length()-1))% casillas.length);
+    }
+    
     public void insertarNodo(String string){
-        int posicion = Hash.algoritmo1(string);
+        int posicion = algoritmoHash1(string);
         System.out.print(string + " sera insertado en la posicion " + posicion);
         if (casillas[posicion] == null){
             casillas[posicion] = new Nodo(string);
@@ -84,6 +89,7 @@ public class Tabla_de_Simbolos {
      */
     public static void main(String[] args) {
         //Simbolo    Tipo    Valor   *
+        
         Tabla_de_Simbolos tabla = new Tabla_de_Simbolos(10);
         System.out.println("Inserciones");
         tabla.insertarNodo("primero");
