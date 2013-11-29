@@ -1,9 +1,7 @@
 package tabla_de_simbolos;
 
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,13 +13,6 @@ public class Robot {
     int y;
     int limiteX = 24;
     int limiteY = 8;
-    
-    int orientacionX;
-    int orientacionY;
-    int contadorMovimientos;
-    String movimiento;
-    List<String []> listaMovimientos;
-    List<String> codigo;
     
     private List<String> listaCoordenadasDadas;
     private List<String> coordenadasTratadas;
@@ -51,13 +42,21 @@ public class Robot {
     };
 
     public Robot() {
-        x = 1;
-        y = 8;
-        orientacionX = 0;
-        orientacionY = 1;//Hacia arriba
-        contadorMovimientos = 1;
-        listaMovimientos = new ArrayList<>();
-        codigo = new ArrayList<>();
+        this.x = 1;
+        this.y = 8;
+    }
+    
+    public void inicializar(){
+        this.x = 1;
+        this.y = 8;
+    }
+
+    public List<int[]> getCoordenadasConvertidas() {
+        return coordenadasConvertidas;
+    }
+
+    public List<Direccion> getListaDeMovimientos() {
+        return listaDeMovimientos;
     }
 
     public void setListaCoordenadasDadas(List<String> listaCoordenadasDadas) {
@@ -174,217 +173,6 @@ public class Robot {
         int c = 2;
         for (Direccion dir : listaDeMovimientos){
             System.out.println(c++ +": "+dir.getTexto());
-        }
-    }
-    
-    private String orientacion(){
-        if (orientacionY == 1)
-            return "^";
-        if (orientacionY == -1)
-            return "V";
-        if (orientacionX == 1)
-            return ">";
-        if (orientacionX == -1)
-            return "<";
-        else
-            return "Error";
-    }
-    
-    public void movimiento(String coordenada){
-        int yAux = 0;
-        int xAux = 0;
-        
-        //Obtener los valores de x & y
-        try {
-            xAux = Integer.parseInt(coordenada.split(",")[0]);
-            yAux = Integer.parseInt(coordenada.split(",")[1]);
-        }catch(Exception e){
-            System.out.println("Malas coordenadas. El formato es x,y");
-            return;
-        }
-        
-        //Si el movimiento es en x
-        if (Math.abs(xAux - x) == 1){
-            //Si se mueve tmb en y
-            if (Math.abs(yAux - y) != 0){
-                System.out.println("Malas coordenadas");
-                return;
-            }else{
-                if (xAux > x){
-                    System.out.println("Movimiento en x+");
-                    movimiento = "Movimiento en x+";
-                }
-                else{
-                    System.out.println("Movimiento en x-");
-                    movimiento = "Movimiento en x-";
-                }
-                //Recorre la posicion
-                giro(xAux - x, 0);
-                x += xAux - x;
-                contadorMovimientos++;
-            }
-        }else{
-            //Si el movimiento es en y
-            if (Math.abs(yAux - y) == 1){
-                //Si se mueve tmb en x
-                if (Math.abs(xAux - x) != 0){
-                    System.out.println("Malas coordenadas");
-                    return;
-                }else{
-                    if (yAux < y){
-                        System.out.println("Movimiento en y+");
-                        movimiento = "Movimiento en y+";
-                    }
-                    else{
-                        System.out.println("Movimiento en y-");
-                        movimiento = "Movimiento en y-";
-                    }
-                    //Recorre la posicion
-                    giro(0,-1*(yAux - y));
-                    y += yAux - y;
-                    contadorMovimientos++;
-                }
-            }
-        }
-    }
-    
-    public void giro(int movX, int movY){
-        //Movimiento en x
-        if (movX != 0){
-            //Anterior movimiento sobre x
-            if (orientacionX != 0){
-                if (movX == orientacionX){
-                    System.out.println("Avanza");
-                    listaMovimientos.add(new String[]{"Avanza", orientacion()});
-                    codigo.add("Avanza();");
-                    
-                }else{
-                    System.out.println("Gira 180 y avanza");
-                    //Se invierte orientacionX
-                    if (orientacionX == 1){
-                        orientacionX = -1;
-                        listaMovimientos.add(new String[]{"Gira 180 y avanza.", orientacion()});
-                    }
-                    else{
-                        orientacionX = 1;
-                        listaMovimientos.add(new String[]{"Gira 180 y avanza.", orientacion()});
-                        codigo.add("Gira(180)");
-                        codigo.add("Avanza()");
-                    }
-                }
-            }
-            //Anterior movimiento sobre y
-            else{
-                if (movX == orientacionY){
-                    System.out.println("Gira -90 y avanza");
-                    orientacionX = orientacionY;
-                    orientacionY = 0;
-                    listaMovimientos.add(new String[]{"Gira -90 y avanza.", orientacion()});
-                    codigo.add("Gira(-90)");
-                    codigo.add("Avanza");
-                }
-                else{
-                    System.out.println("Gira +90 y avanza");
-                    if (orientacionY == 1){
-                        orientacionX = -1;
-                        orientacionY = 0;
-                        listaMovimientos.add(new String[]{"Gira +90 y avanza.", orientacion()});
-                        codigo.add("Gira(90)");
-                        codigo.add("Avanza");
-                    }
-                    else{
-                        orientacionX = 1;
-                        orientacionY = 0;
-                        listaMovimientos.add(new String[]{"Gira +90 y avanza.", orientacion()});
-                        codigo.add("Gira(90)");
-                        codigo.add("Avanza");
-                    }
-                }
-            }
-        }
-        //Movimiento en y
-        else if (movY != 0){
-            //Anterior movimiento sobre y
-            if (orientacionY != 0){
-                if (movY == orientacionY){
-                    System.out.println("Avanza");
-                    listaMovimientos.add(new String[]{"Avanza", orientacion()});
-                    codigo.add("Avanza()");
-                }else{
-                    System.out.println("Gira 180 y avanza");
-                    if (orientacionY == 1){
-                        orientacionY = -1;
-                    }
-                    else{
-                        orientacionY = 1;
-                    }
-                    listaMovimientos.add(new String[]{"Gira 180 y avanza.", orientacion()});
-                    codigo.add("Gira(180)");
-                    codigo.add("Avanza");
-                }
-            }
-            //Anterior movimiento sobre x
-            else{
-                if (movY == orientacionX){
-                    System.out.println("Gira +90 y avanza");
-                    orientacionX = orientacionY;
-                    orientacionY = 1;
-                    listaMovimientos.add(new String[]{"Gira +90 y avanza.", orientacion()});
-                    codigo.add("Gira(90)");
-                    codigo.add("Avanza");
-                }
-                else{
-                    System.out.println("Gira -90 y avanza");
-                    if (orientacionX == 1){
-                        orientacionY = -1;
-                        orientacionX = 0;
-                    }else{
-                        orientacionY = 1;
-                        orientacionX = 0;
-                    }
-                    listaMovimientos.add(new String[]{"Gira -90 y avanza.", orientacion()});
-                    codigo.add("Gira(-90)");
-                    codigo.add("Avanza");
-                }
-            }
-        }
-    }
-    
-    public void verCoordenadas(){
-        System.out.println("Orientacion: "+ direccion());
-        System.out.print("Coordenadas actuales (y,x) = ");
-        System.out.print(y);
-        System.out.println("," + x);
-    }
-    
-    public String direccion(){
-        if (orientacionX == 1)
-            return ">";
-        if (orientacionX == -1)
-            return "<";
-        if (orientacionY == 1)
-            return "^";
-        if (orientacionY == -1)
-            return "V";
-        if (orientacionY == 0 && orientacionX == 0)
-            return "Los 2 valen 0";
-        if (orientacionY != 0 && orientacionX != 0)
-            return "Los 2 != 0";
-        return "Algo raro paso";
-    }
-    
-    public static void main(String[] args){
-        Robot robot = new Robot();
-        Scanner scan = new Scanner(System.in);
-        String coordenadas = "";
-        
-        while (!coordenadas.equals("0")){
-            robot.verCoordenadas();
-            System.out.println("Movimiento #" + robot.contadorMovimientos);
-            System.out.print("Coordenadas nuevas (y,x): ");
-            coordenadas = scan.nextLine();
-            robot.movimiento(coordenadas);
-            System.out.println();
         }
     }
 }
