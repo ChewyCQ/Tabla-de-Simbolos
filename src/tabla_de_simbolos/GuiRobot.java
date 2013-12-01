@@ -1,14 +1,15 @@
 package tabla_de_simbolos;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JToggleButton;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FileUtils;
-import tabla_de_simbolos.Robot.Direccion;
 
 /**
  * 
@@ -18,6 +19,8 @@ public class GuiRobot extends javax.swing.JFrame {
 
     Robot robot;
     List<String> listaTexto = null;
+    //51
+    int[] numeros;
     
     /**
      * Creates new form GuiRobot
@@ -26,6 +29,10 @@ public class GuiRobot extends javax.swing.JFrame {
         initComponents();
         robot = new Robot();
         setLocationRelativeTo(null);
+        numeros = new int[51];
+        for (int c = 0; c < numeros.length; c++){
+            numeros[c] = 0;
+        }
     }
     
     public void file2List(File file){
@@ -57,6 +64,37 @@ public class GuiRobot extends javax.swing.JFrame {
                 robot.getListaDeMovimientos().get(c).toString()});
         }
     }
+    
+    private void cambiarColor(JToggleButton boton){
+        if (boton.isSelected()){
+            boton.setBackground(Color.BLACK);
+        }else{
+            boton.setBackground(Color.WHITE);
+        }
+    }
+    
+    /**
+     * 
+     * @param columna Columna de la tabla
+     * @param valor Valor de la posicion
+     * @param suma Suma o resta
+     */
+    private void cambiarValor(int columna, int  valor, boolean suma){
+        if (suma){
+            numeros[columna] += Math.pow(2, valor);
+        }else{
+            numeros[columna] -= Math.pow(2, valor);
+        }
+        mostrarValor();
+    }
+    
+    private void mostrarValor(){
+        StringBuilder texto = new StringBuilder("");
+        for (int c = 0; c < numeros.length; c++){
+            texto.append(String.valueOf(numeros[c])+",");
+        }
+        jTextField.setText(texto.toString());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,7 +105,8 @@ public class GuiRobot extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jButtonArchivo = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -76,16 +115,422 @@ public class GuiRobot extends javax.swing.JFrame {
         jInterpretar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableCoordenadas = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jTB1 = new javax.swing.JToggleButton();
+        jTB2 = new javax.swing.JToggleButton();
+        jTB3 = new javax.swing.JToggleButton();
+        jTB4 = new javax.swing.JToggleButton();
+        jTB5 = new javax.swing.JToggleButton();
+        jTB6 = new javax.swing.JToggleButton();
+        jTB7 = new javax.swing.JToggleButton();
+        jTB8 = new javax.swing.JToggleButton();
+        jTB17 = new javax.swing.JToggleButton();
+        jTB16 = new javax.swing.JToggleButton();
+        jTB15 = new javax.swing.JToggleButton();
+        jTB14 = new javax.swing.JToggleButton();
+        jTB13 = new javax.swing.JToggleButton();
+        jTB12 = new javax.swing.JToggleButton();
+        jTB11 = new javax.swing.JToggleButton();
+        jTB10 = new javax.swing.JToggleButton();
+        jTB9 = new javax.swing.JToggleButton();
+        jTB26 = new javax.swing.JToggleButton();
+        jTB18 = new javax.swing.JToggleButton();
+        jTB19 = new javax.swing.JToggleButton();
+        jTB20 = new javax.swing.JToggleButton();
+        jTB21 = new javax.swing.JToggleButton();
+        jTB22 = new javax.swing.JToggleButton();
+        jTB23 = new javax.swing.JToggleButton();
+        jTB24 = new javax.swing.JToggleButton();
+        jTB25 = new javax.swing.JToggleButton();
+        jTB34 = new javax.swing.JToggleButton();
+        jTB33 = new javax.swing.JToggleButton();
+        jTB32 = new javax.swing.JToggleButton();
+        jTB31 = new javax.swing.JToggleButton();
+        jTB30 = new javax.swing.JToggleButton();
+        jTB29 = new javax.swing.JToggleButton();
+        jTB28 = new javax.swing.JToggleButton();
+        jTB27 = new javax.swing.JToggleButton();
+        jTB42 = new javax.swing.JToggleButton();
+        jTB41 = new javax.swing.JToggleButton();
+        jTB40 = new javax.swing.JToggleButton();
+        jTB39 = new javax.swing.JToggleButton();
+        jTB38 = new javax.swing.JToggleButton();
+        jTB37 = new javax.swing.JToggleButton();
+        jTB36 = new javax.swing.JToggleButton();
+        jTB35 = new javax.swing.JToggleButton();
+        jToggleButton1_621 = new javax.swing.JToggleButton();
+        jToggleButton1_673 = new javax.swing.JToggleButton();
+        jToggleButton1_672 = new javax.swing.JToggleButton();
+        jToggleButton1_677 = new javax.swing.JToggleButton();
+        jToggleButton1_676 = new javax.swing.JToggleButton();
+        jToggleButton1_675 = new javax.swing.JToggleButton();
+        jToggleButton1_674 = new javax.swing.JToggleButton();
+        jToggleButton1_680 = new javax.swing.JToggleButton();
+        jToggleButton1_681 = new javax.swing.JToggleButton();
+        jToggleButton1_678 = new javax.swing.JToggleButton();
+        jToggleButton1_679 = new javax.swing.JToggleButton();
+        jToggleButton1_662 = new javax.swing.JToggleButton();
+        jToggleButton1_664 = new javax.swing.JToggleButton();
+        jToggleButton1_663 = new javax.swing.JToggleButton();
+        jToggleButton1_666 = new javax.swing.JToggleButton();
+        jToggleButton1_665 = new javax.swing.JToggleButton();
+        jToggleButton1_667 = new javax.swing.JToggleButton();
+        jToggleButton1_668 = new javax.swing.JToggleButton();
+        jToggleButton1_669 = new javax.swing.JToggleButton();
+        jToggleButton1_670 = new javax.swing.JToggleButton();
+        jToggleButton1_671 = new javax.swing.JToggleButton();
+        jToggleButton1_501 = new javax.swing.JToggleButton();
+        jToggleButton1_500 = new javax.swing.JToggleButton();
+        jToggleButton1_499 = new javax.swing.JToggleButton();
+        jToggleButton1_498 = new javax.swing.JToggleButton();
+        jToggleButton1_497 = new javax.swing.JToggleButton();
+        jToggleButton1_496 = new javax.swing.JToggleButton();
+        jToggleButton1_495 = new javax.swing.JToggleButton();
+        jToggleButton1_494 = new javax.swing.JToggleButton();
+        jToggleButton1_491 = new javax.swing.JToggleButton();
+        jToggleButton1_493 = new javax.swing.JToggleButton();
+        jToggleButton1_492 = new javax.swing.JToggleButton();
+        jToggleButton1_490 = new javax.swing.JToggleButton();
+        jToggleButton1_489 = new javax.swing.JToggleButton();
+        jToggleButton1_484 = new javax.swing.JToggleButton();
+        jToggleButton1_686 = new javax.swing.JToggleButton();
+        jToggleButton1_688 = new javax.swing.JToggleButton();
+        jToggleButton1_687 = new javax.swing.JToggleButton();
+        jToggleButton1_682 = new javax.swing.JToggleButton();
+        jToggleButton1_683 = new javax.swing.JToggleButton();
+        jToggleButton1_689 = new javax.swing.JToggleButton();
+        jToggleButton1_690 = new javax.swing.JToggleButton();
+        jToggleButton1_691 = new javax.swing.JToggleButton();
+        jToggleButton1_474 = new javax.swing.JToggleButton();
+        jToggleButton1_475 = new javax.swing.JToggleButton();
+        jToggleButton1_632 = new javax.swing.JToggleButton();
+        jToggleButton1_633 = new javax.swing.JToggleButton();
+        jToggleButton1_637 = new javax.swing.JToggleButton();
+        jToggleButton1_636 = new javax.swing.JToggleButton();
+        jToggleButton1_635 = new javax.swing.JToggleButton();
+        jToggleButton1_634 = new javax.swing.JToggleButton();
+        jToggleButton1_641 = new javax.swing.JToggleButton();
+        jToggleButton1_640 = new javax.swing.JToggleButton();
+        jToggleButton1_639 = new javax.swing.JToggleButton();
+        jToggleButton1_638 = new javax.swing.JToggleButton();
+        jToggleButton1_622 = new javax.swing.JToggleButton();
+        jToggleButton1_631 = new javax.swing.JToggleButton();
+        jToggleButton1_624 = new javax.swing.JToggleButton();
+        jToggleButton1_623 = new javax.swing.JToggleButton();
+        jToggleButton1_626 = new javax.swing.JToggleButton();
+        jToggleButton1_625 = new javax.swing.JToggleButton();
+        jToggleButton1_628 = new javax.swing.JToggleButton();
+        jToggleButton1_627 = new javax.swing.JToggleButton();
+        jToggleButton1_630 = new javax.swing.JToggleButton();
+        jTB43 = new javax.swing.JToggleButton();
+        jToggleButton1_654 = new javax.swing.JToggleButton();
+        jToggleButton1_655 = new javax.swing.JToggleButton();
+        jToggleButton1_652 = new javax.swing.JToggleButton();
+        jToggleButton1_653 = new javax.swing.JToggleButton();
+        jToggleButton1_661 = new javax.swing.JToggleButton();
+        jToggleButton1_660 = new javax.swing.JToggleButton();
+        jToggleButton1_659 = new javax.swing.JToggleButton();
+        jToggleButton1_658 = new javax.swing.JToggleButton();
+        jToggleButton1_657 = new javax.swing.JToggleButton();
+        jToggleButton1_656 = new javax.swing.JToggleButton();
+        jToggleButton1_642 = new javax.swing.JToggleButton();
+        jToggleButton1_643 = new javax.swing.JToggleButton();
+        jToggleButton1_644 = new javax.swing.JToggleButton();
+        jToggleButton1_650 = new javax.swing.JToggleButton();
+        jToggleButton1_649 = new javax.swing.JToggleButton();
+        jToggleButton1_651 = new javax.swing.JToggleButton();
+        jToggleButton1_646 = new javax.swing.JToggleButton();
+        jToggleButton1_645 = new javax.swing.JToggleButton();
+        jToggleButton1_648 = new javax.swing.JToggleButton();
+        jToggleButton1_647 = new javax.swing.JToggleButton();
+        jToggleButton1_551 = new javax.swing.JToggleButton();
+        jToggleButton1_550 = new javax.swing.JToggleButton();
+        jToggleButton1_549 = new javax.swing.JToggleButton();
+        jToggleButton1_548 = new javax.swing.JToggleButton();
+        jToggleButton1_547 = new javax.swing.JToggleButton();
+        jToggleButton1_546 = new javax.swing.JToggleButton();
+        jToggleButton1_544 = new javax.swing.JToggleButton();
+        jToggleButton1_545 = new javax.swing.JToggleButton();
+        jToggleButton1_542 = new javax.swing.JToggleButton();
+        jToggleButton1_543 = new javax.swing.JToggleButton();
+        jToggleButton1_561 = new javax.swing.JToggleButton();
+        jToggleButton1_558 = new javax.swing.JToggleButton();
+        jToggleButton1_557 = new javax.swing.JToggleButton();
+        jToggleButton1_560 = new javax.swing.JToggleButton();
+        jToggleButton1_559 = new javax.swing.JToggleButton();
+        jToggleButton1_553 = new javax.swing.JToggleButton();
+        jToggleButton1_554 = new javax.swing.JToggleButton();
+        jToggleButton1_555 = new javax.swing.JToggleButton();
+        jToggleButton1_556 = new javax.swing.JToggleButton();
+        jToggleButton1_552 = new javax.swing.JToggleButton();
+        jToggleButton1_569 = new javax.swing.JToggleButton();
+        jToggleButton1_568 = new javax.swing.JToggleButton();
+        jToggleButton1_562 = new javax.swing.JToggleButton();
+        jToggleButton1_563 = new javax.swing.JToggleButton();
+        jToggleButton1_566 = new javax.swing.JToggleButton();
+        jToggleButton1_567 = new javax.swing.JToggleButton();
+        jToggleButton1_564 = new javax.swing.JToggleButton();
+        jToggleButton1_565 = new javax.swing.JToggleButton();
+        jToggleButton1_508 = new javax.swing.JToggleButton();
+        jToggleButton1_509 = new javax.swing.JToggleButton();
+        jToggleButton1_506 = new javax.swing.JToggleButton();
+        jToggleButton1_507 = new javax.swing.JToggleButton();
+        jToggleButton1_504 = new javax.swing.JToggleButton();
+        jToggleButton1_505 = new javax.swing.JToggleButton();
+        jToggleButton1_502 = new javax.swing.JToggleButton();
+        jToggleButton1_503 = new javax.swing.JToggleButton();
+        jToggleButton1_510 = new javax.swing.JToggleButton();
+        jToggleButton1_511 = new javax.swing.JToggleButton();
+        jToggleButton1_517 = new javax.swing.JToggleButton();
+        jToggleButton1_518 = new javax.swing.JToggleButton();
+        jToggleButton1_519 = new javax.swing.JToggleButton();
+        jToggleButton1_520 = new javax.swing.JToggleButton();
+        jToggleButton1_513 = new javax.swing.JToggleButton();
+        jToggleButton1_514 = new javax.swing.JToggleButton();
+        jToggleButton1_515 = new javax.swing.JToggleButton();
+        jToggleButton1_516 = new javax.swing.JToggleButton();
+        jToggleButton1_521 = new javax.swing.JToggleButton();
+        jToggleButton1_512 = new javax.swing.JToggleButton();
+        jToggleButton1_526 = new javax.swing.JToggleButton();
+        jToggleButton1_527 = new javax.swing.JToggleButton();
+        jToggleButton1_524 = new javax.swing.JToggleButton();
+        jToggleButton1_525 = new javax.swing.JToggleButton();
+        jToggleButton1_530 = new javax.swing.JToggleButton();
+        jToggleButton1_531 = new javax.swing.JToggleButton();
+        jToggleButton1_528 = new javax.swing.JToggleButton();
+        jToggleButton1_529 = new javax.swing.JToggleButton();
+        jToggleButton1_523 = new javax.swing.JToggleButton();
+        jToggleButton1_522 = new javax.swing.JToggleButton();
+        jToggleButton1_535 = new javax.swing.JToggleButton();
+        jToggleButton1_536 = new javax.swing.JToggleButton();
+        jToggleButton1_537 = new javax.swing.JToggleButton();
+        jToggleButton1_538 = new javax.swing.JToggleButton();
+        jToggleButton1_539 = new javax.swing.JToggleButton();
+        jToggleButton1_540 = new javax.swing.JToggleButton();
+        jToggleButton1_541 = new javax.swing.JToggleButton();
+        jToggleButton1_532 = new javax.swing.JToggleButton();
+        jToggleButton1_534 = new javax.swing.JToggleButton();
+        jToggleButton1_533 = new javax.swing.JToggleButton();
+        jToggleButton1_787 = new javax.swing.JToggleButton();
+        jToggleButton1_786 = new javax.swing.JToggleButton();
+        jToggleButton1_788 = new javax.swing.JToggleButton();
+        jToggleButton1_789 = new javax.swing.JToggleButton();
+        jToggleButton1_801 = new javax.swing.JToggleButton();
+        jToggleButton1_800 = new javax.swing.JToggleButton();
+        jToggleButton1_797 = new javax.swing.JToggleButton();
+        jToggleButton1_796 = new javax.swing.JToggleButton();
+        jToggleButton1_799 = new javax.swing.JToggleButton();
+        jToggleButton1_798 = new javax.swing.JToggleButton();
+        jToggleButton1_571 = new javax.swing.JToggleButton();
+        jToggleButton1_570 = new javax.swing.JToggleButton();
+        jToggleButton1_810 = new javax.swing.JToggleButton();
+        jToggleButton1_809 = new javax.swing.JToggleButton();
+        jToggleButton1_808 = new javax.swing.JToggleButton();
+        jToggleButton1_807 = new javax.swing.JToggleButton();
+        jToggleButton1_811 = new javax.swing.JToggleButton();
+        jToggleButton1_802 = new javax.swing.JToggleButton();
+        jToggleButton1_806 = new javax.swing.JToggleButton();
+        jToggleButton1_805 = new javax.swing.JToggleButton();
+        jToggleButton1_804 = new javax.swing.JToggleButton();
+        jToggleButton1_803 = new javax.swing.JToggleButton();
+        jToggleButton1_580 = new javax.swing.JToggleButton();
+        jToggleButton1_579 = new javax.swing.JToggleButton();
+        jToggleButton1_581 = new javax.swing.JToggleButton();
+        jToggleButton1_819 = new javax.swing.JToggleButton();
+        jToggleButton1_818 = new javax.swing.JToggleButton();
+        jToggleButton1_572 = new javax.swing.JToggleButton();
+        jToggleButton1_821 = new javax.swing.JToggleButton();
+        jToggleButton1_573 = new javax.swing.JToggleButton();
+        jToggleButton1_820 = new javax.swing.JToggleButton();
+        jToggleButton1_574 = new javax.swing.JToggleButton();
+        jToggleButton1_575 = new javax.swing.JToggleButton();
+        jToggleButton1_576 = new javax.swing.JToggleButton();
+        jToggleButton1_577 = new javax.swing.JToggleButton();
+        jToggleButton1_578 = new javax.swing.JToggleButton();
+        jToggleButton1_813 = new javax.swing.JToggleButton();
+        jToggleButton1_812 = new javax.swing.JToggleButton();
+        jToggleButton1_815 = new javax.swing.JToggleButton();
+        jToggleButton1_814 = new javax.swing.JToggleButton();
+        jToggleButton1_817 = new javax.swing.JToggleButton();
+        jToggleButton1_816 = new javax.swing.JToggleButton();
+        jToggleButton1_827 = new javax.swing.JToggleButton();
+        jToggleButton1_828 = new javax.swing.JToggleButton();
+        jToggleButton1_825 = new javax.swing.JToggleButton();
+        jToggleButton1_826 = new javax.swing.JToggleButton();
+        jToggleButton1_823 = new javax.swing.JToggleButton();
+        jToggleButton1_824 = new javax.swing.JToggleButton();
+        jToggleButton1_822 = new javax.swing.JToggleButton();
+        jToggleButton1_831 = new javax.swing.JToggleButton();
+        jToggleButton1_829 = new javax.swing.JToggleButton();
+        jToggleButton1_830 = new javax.swing.JToggleButton();
+        jToggleButton1_832 = new javax.swing.JToggleButton();
+        jToggleButton1_833 = new javax.swing.JToggleButton();
+        jToggleButton1_834 = new javax.swing.JToggleButton();
+        jToggleButton1_587 = new javax.swing.JToggleButton();
+        jToggleButton1_586 = new javax.swing.JToggleButton();
+        jToggleButton1_589 = new javax.swing.JToggleButton();
+        jToggleButton1_588 = new javax.swing.JToggleButton();
+        jToggleButton1_583 = new javax.swing.JToggleButton();
+        jToggleButton1_582 = new javax.swing.JToggleButton();
+        jToggleButton1_585 = new javax.swing.JToggleButton();
+        jToggleButton1_584 = new javax.swing.JToggleButton();
+        jToggleButton1_590 = new javax.swing.JToggleButton();
+        jToggleButton1_591 = new javax.swing.JToggleButton();
+        jToggleButton1_1027 = new javax.swing.JToggleButton();
+        jToggleButton1_1028 = new javax.swing.JToggleButton();
+        jToggleButton1_1025 = new javax.swing.JToggleButton();
+        jToggleButton1_1026 = new javax.swing.JToggleButton();
+        jToggleButton1_1023 = new javax.swing.JToggleButton();
+        jToggleButton1_1024 = new javax.swing.JToggleButton();
+        jToggleButton1_1022 = new javax.swing.JToggleButton();
+        jToggleButton1_1114 = new javax.swing.JToggleButton();
+        jToggleButton1_1113 = new javax.swing.JToggleButton();
+        jToggleButton1_1112 = new javax.swing.JToggleButton();
+        jToggleButton1_1109 = new javax.swing.JToggleButton();
+        jToggleButton1_914 = new javax.swing.JToggleButton();
+        jToggleButton1_1111 = new javax.swing.JToggleButton();
+        jToggleButton1_1110 = new javax.swing.JToggleButton();
+        jToggleButton1_921 = new javax.swing.JToggleButton();
+        jToggleButton1_1103 = new javax.swing.JToggleButton();
+        jToggleButton1_1102 = new javax.swing.JToggleButton();
+        jToggleButton1_918 = new javax.swing.JToggleButton();
+        jToggleButton1_917 = new javax.swing.JToggleButton();
+        jToggleButton1_920 = new javax.swing.JToggleButton();
+        jToggleButton1_1092 = new javax.swing.JToggleButton();
+        jToggleButton1_1095 = new javax.swing.JToggleButton();
+        jToggleButton1_1096 = new javax.swing.JToggleButton();
+        jToggleButton1_1093 = new javax.swing.JToggleButton();
+        jToggleButton1_1094 = new javax.swing.JToggleButton();
+        jToggleButton1_1099 = new javax.swing.JToggleButton();
+        jToggleButton1_1100 = new javax.swing.JToggleButton();
+        jToggleButton1_1097 = new javax.swing.JToggleButton();
+        jToggleButton1_1098 = new javax.swing.JToggleButton();
+        jToggleButton1_1079 = new javax.swing.JToggleButton();
+        jToggleButton1_1081 = new javax.swing.JToggleButton();
+        jToggleButton1_1080 = new javax.swing.JToggleButton();
+        jToggleButton1_1088 = new javax.swing.JToggleButton();
+        jToggleButton1_1087 = new javax.swing.JToggleButton();
+        jToggleButton1_1086 = new javax.swing.JToggleButton();
+        jToggleButton1_1085 = new javax.swing.JToggleButton();
+        jToggleButton1_1091 = new javax.swing.JToggleButton();
+        jToggleButton1_1090 = new javax.swing.JToggleButton();
+        jToggleButton1_1089 = new javax.swing.JToggleButton();
+        jToggleButton1_1083 = new javax.swing.JToggleButton();
+        jToggleButton1_1084 = new javax.swing.JToggleButton();
+        jToggleButton1_1082 = new javax.swing.JToggleButton();
+        jToggleButton1_1038 = new javax.swing.JToggleButton();
+        jToggleButton1_1039 = new javax.swing.JToggleButton();
+        jToggleButton1_1040 = new javax.swing.JToggleButton();
+        jToggleButton1_1041 = new javax.swing.JToggleButton();
+        jToggleButton1_1034 = new javax.swing.JToggleButton();
+        jToggleButton1_1035 = new javax.swing.JToggleButton();
+        jToggleButton1_1036 = new javax.swing.JToggleButton();
+        jToggleButton1_1037 = new javax.swing.JToggleButton();
+        jToggleButton1_1032 = new javax.swing.JToggleButton();
+        jToggleButton1_1033 = new javax.swing.JToggleButton();
+        jToggleButton1_1031 = new javax.swing.JToggleButton();
+        jToggleButton1_1029 = new javax.swing.JToggleButton();
+        jToggleButton1_1030 = new javax.swing.JToggleButton();
+        jToggleButton1_1043 = new javax.swing.JToggleButton();
+        jToggleButton1_1044 = new javax.swing.JToggleButton();
+        jToggleButton1_1042 = new javax.swing.JToggleButton();
+        jToggleButton1_1047 = new javax.swing.JToggleButton();
+        jToggleButton1_1048 = new javax.swing.JToggleButton();
+        jToggleButton1_1045 = new javax.swing.JToggleButton();
+        jToggleButton1_1046 = new javax.swing.JToggleButton();
+        jToggleButton1_879 = new javax.swing.JToggleButton();
+        jToggleButton1_878 = new javax.swing.JToggleButton();
+        jToggleButton1_877 = new javax.swing.JToggleButton();
+        jToggleButton1_876 = new javax.swing.JToggleButton();
+        jToggleButton1_881 = new javax.swing.JToggleButton();
+        jToggleButton1_880 = new javax.swing.JToggleButton();
+        jToggleButton1_874 = new javax.swing.JToggleButton();
+        jToggleButton1_875 = new javax.swing.JToggleButton();
+        jToggleButton1_872 = new javax.swing.JToggleButton();
+        jToggleButton1_873 = new javax.swing.JToggleButton();
+        jToggleButton1_866 = new javax.swing.JToggleButton();
+        jToggleButton1_865 = new javax.swing.JToggleButton();
+        jToggleButton1_868 = new javax.swing.JToggleButton();
+        jToggleButton1_867 = new javax.swing.JToggleButton();
+        jToggleButton1_870 = new javax.swing.JToggleButton();
+        jToggleButton1_869 = new javax.swing.JToggleButton();
+        jToggleButton1_871 = new javax.swing.JToggleButton();
+        jToggleButton1_862 = new javax.swing.JToggleButton();
+        jToggleButton1_863 = new javax.swing.JToggleButton();
+        jToggleButton1_864 = new javax.swing.JToggleButton();
+        jToggleButton1_891 = new javax.swing.JToggleButton();
+        jToggleButton1_888 = new javax.swing.JToggleButton();
+        jToggleButton1_887 = new javax.swing.JToggleButton();
+        jToggleButton1_890 = new javax.swing.JToggleButton();
+        jToggleButton1_889 = new javax.swing.JToggleButton();
+        jToggleButton1_883 = new javax.swing.JToggleButton();
+        jToggleButton1_884 = new javax.swing.JToggleButton();
+        jToggleButton1_885 = new javax.swing.JToggleButton();
+        jToggleButton1_886 = new javax.swing.JToggleButton();
+        jToggleButton1_882 = new javax.swing.JToggleButton();
+        jToggleButton1_940 = new javax.swing.JToggleButton();
+        jToggleButton1_939 = new javax.swing.JToggleButton();
+        jToggleButton1_941 = new javax.swing.JToggleButton();
+        jToggleButton1_1123 = new javax.swing.JToggleButton();
+        jToggleButton1_1122 = new javax.swing.JToggleButton();
+        jToggleButton1_1125 = new javax.swing.JToggleButton();
+        jToggleButton1_1124 = new javax.swing.JToggleButton();
+        jToggleButton1_1121 = new javax.swing.JToggleButton();
+        jToggleButton1_1120 = new javax.swing.JToggleButton();
+        jToggleButton1_1119 = new javax.swing.JToggleButton();
+        jToggleButton1_1118 = new javax.swing.JToggleButton();
+        jToggleButton1_1117 = new javax.swing.JToggleButton();
+        jToggleButton1_1116 = new javax.swing.JToggleButton();
+        jToggleButton1_1115 = new javax.swing.JToggleButton();
+        jToggleButton1_919 = new javax.swing.JToggleButton();
+        jToggleButton1_950 = new javax.swing.JToggleButton();
+        jToggleButton1_951 = new javax.swing.JToggleButton();
+        jToggleButton1_948 = new javax.swing.JToggleButton();
+        jToggleButton1_949 = new javax.swing.JToggleButton();
+        jToggleButton1_946 = new javax.swing.JToggleButton();
+        jToggleButton1_947 = new javax.swing.JToggleButton();
+        jToggleButton1_944 = new javax.swing.JToggleButton();
+        jToggleButton1_945 = new javax.swing.JToggleButton();
+        jToggleButton1_942 = new javax.swing.JToggleButton();
+        jToggleButton1_943 = new javax.swing.JToggleButton();
+        jToggleButton1_952 = new javax.swing.JToggleButton();
+        jToggleButton1_953 = new javax.swing.JToggleButton();
+        jToggleButton1_954 = new javax.swing.JToggleButton();
+        jToggleButton1_1164 = new javax.swing.JToggleButton();
+        jToggleButton1_1162 = new javax.swing.JToggleButton();
+        jToggleButton1_1163 = new javax.swing.JToggleButton();
+        jToggleButton1_1155 = new javax.swing.JToggleButton();
+        jToggleButton1_1156 = new javax.swing.JToggleButton();
+        jToggleButton1_1157 = new javax.swing.JToggleButton();
+        jToggleButton1_1158 = new javax.swing.JToggleButton();
+        jToggleButton1_1152 = new javax.swing.JToggleButton();
+        jToggleButton1_1153 = new javax.swing.JToggleButton();
+        jToggleButton1_1154 = new javax.swing.JToggleButton();
+        jToggleButton1_1159 = new javax.swing.JToggleButton();
+        jToggleButton1_1160 = new javax.swing.JToggleButton();
+        jToggleButton1_1161 = new javax.swing.JToggleButton();
+        jToggleButton1_1146 = new javax.swing.JToggleButton();
+        jToggleButton1_1147 = new javax.swing.JToggleButton();
+        jToggleButton1_1144 = new javax.swing.JToggleButton();
+        jToggleButton1_1145 = new javax.swing.JToggleButton();
+        jToggleButton1_1142 = new javax.swing.JToggleButton();
+        jToggleButton1_1143 = new javax.swing.JToggleButton();
+        jToggleButton1_1150 = new javax.swing.JToggleButton();
+        jToggleButton1_1151 = new javax.swing.JToggleButton();
+        jToggleButton1_1148 = new javax.swing.JToggleButton();
+        jToggleButton1_1149 = new javax.swing.JToggleButton();
+        jTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Interprete");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Intérprete");
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de Ingreso"));
 
         jButtonArchivo.setText("Seleccionar Archivo");
+        jButtonArchivo.setToolTipText("Selecciona el  txt con las coordenadas");
         jButtonArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonArchivoActionPerformed(evt);
@@ -94,6 +539,7 @@ public class GuiRobot extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setEnabled(false);
         jScrollPane3.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -103,10 +549,10 @@ public class GuiRobot extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButtonArchivo)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 451, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -115,11 +561,11 @@ public class GuiRobot extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButtonArchivo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Coordenadas y movimientos"));
 
         jInterpretar.setText("Interpretar");
         jInterpretar.addActionListener(new java.awt.event.ActionListener() {
@@ -155,8 +601,8 @@ public class GuiRobot extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jInterpretar)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE))
+                        .addGap(0, 611, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -169,29 +615,3676 @@ public class GuiRobot extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12))
+        );
+
+        jTabbedPane1.addTab("Intérprete", jPanel3);
+
+        jTB1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB1ActionPerformed(evt);
+            }
+        });
+
+        jTB2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB2ActionPerformed(evt);
+            }
+        });
+
+        jTB3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB3ActionPerformed(evt);
+            }
+        });
+
+        jTB4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB4ActionPerformed(evt);
+            }
+        });
+
+        jTB5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB5ActionPerformed(evt);
+            }
+        });
+
+        jTB6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB6ActionPerformed(evt);
+            }
+        });
+
+        jTB7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB7ActionPerformed(evt);
+            }
+        });
+
+        jTB8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB8ActionPerformed(evt);
+            }
+        });
+
+        jTB17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB17ActionPerformed(evt);
+            }
+        });
+
+        jTB16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB16ActionPerformed(evt);
+            }
+        });
+
+        jTB15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB15ActionPerformed(evt);
+            }
+        });
+
+        jTB14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB14ActionPerformed(evt);
+            }
+        });
+
+        jTB13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB13ActionPerformed(evt);
+            }
+        });
+
+        jTB12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB12ActionPerformed(evt);
+            }
+        });
+
+        jTB11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB11ActionPerformed(evt);
+            }
+        });
+
+        jTB10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB10ActionPerformed(evt);
+            }
+        });
+
+        jTB9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB9ActionPerformed(evt);
+            }
+        });
+
+        jTB26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB26ActionPerformed(evt);
+            }
+        });
+
+        jTB18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB18ActionPerformed(evt);
+            }
+        });
+
+        jTB19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB19ActionPerformed(evt);
+            }
+        });
+
+        jTB20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB20ActionPerformed(evt);
+            }
+        });
+
+        jTB21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB21ActionPerformed(evt);
+            }
+        });
+
+        jTB22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB22ActionPerformed(evt);
+            }
+        });
+
+        jTB23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB23ActionPerformed(evt);
+            }
+        });
+
+        jTB24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB24ActionPerformed(evt);
+            }
+        });
+
+        jTB25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB25ActionPerformed(evt);
+            }
+        });
+
+        jTB34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB34ActionPerformed(evt);
+            }
+        });
+
+        jTB33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB33ActionPerformed(evt);
+            }
+        });
+
+        jTB32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB32ActionPerformed(evt);
+            }
+        });
+
+        jTB31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB31ActionPerformed(evt);
+            }
+        });
+
+        jTB30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB30ActionPerformed(evt);
+            }
+        });
+
+        jTB29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB29ActionPerformed(evt);
+            }
+        });
+
+        jTB28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB28ActionPerformed(evt);
+            }
+        });
+
+        jTB27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB27ActionPerformed(evt);
+            }
+        });
+
+        jTB42.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB42ActionPerformed(evt);
+            }
+        });
+
+        jTB41.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB41ActionPerformed(evt);
+            }
+        });
+
+        jTB40.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB40ActionPerformed(evt);
+            }
+        });
+
+        jTB39.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB39ActionPerformed(evt);
+            }
+        });
+
+        jTB38.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB38ActionPerformed(evt);
+            }
+        });
+
+        jTB37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB37ActionPerformed(evt);
+            }
+        });
+
+        jTB36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB36ActionPerformed(evt);
+            }
+        });
+
+        jTB35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB35ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_621.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_621ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_673.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_673ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_672.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_672ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_677.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_677ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_676.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_676ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_675.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_675ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_674.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_674ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_680.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_680ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_681.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_681ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_678.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_678ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_679.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_679ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_662.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_662ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_664.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_664ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_663.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_663ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_666.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_666ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_665.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_665ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_667.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_667ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_668.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_668ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_669.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_669ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_670.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_670ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_671.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_671ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_501.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_501ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_500.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_500ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_499.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_499ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_498.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_498ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_497.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_497ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_496.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_496ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_495.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_495ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_494.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_494ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_491.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_491ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_493.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_493ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_492.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_492ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_490.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_490ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_489.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_489ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_484.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_484ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_686.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_686ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_688.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_688ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_687.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_687ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_682.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_682ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_683.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_683ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_689.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_689ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_690.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_690ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_691.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_691ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_474.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_474ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_475.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_475ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_632.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_632ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_633.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_633ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_637.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_637ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_636.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_636ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_635.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_635ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_634.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_634ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_641.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_641ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_640.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_640ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_639.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_639ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_638.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_638ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_622.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_622ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_631.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_631ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_624.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_624ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_623.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_623ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_626.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_626ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_625.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_625ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_628.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_628ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_627.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_627ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_630.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_630ActionPerformed(evt);
+            }
+        });
+
+        jTB43.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTB43ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_654.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_654ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_655.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_655ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_652.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_652ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_653.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_653ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_661.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_661ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_660.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_660ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_659.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_659ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_658.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_658ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_657.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_657ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_656.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_656ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_642.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_642ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_643.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_643ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_644.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_644ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_650.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_650ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_649.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_649ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_651.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_651ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_646.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_646ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_645.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_645ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_648.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_648ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_647.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_647ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_551.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_551ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_550.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_550ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_549.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_549ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_548.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_548ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_547.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_547ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_546.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_546ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_544.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_544ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_545.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_545ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_542.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_542ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_543.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_543ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_561.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_561ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_558.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_558ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_557.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_557ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_560.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_560ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_559.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_559ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_553.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_553ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_554.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_554ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_555.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_555ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_556.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_556ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_552.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_552ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_569.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_569ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_568.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_568ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_562.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_562ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_563.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_563ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_566.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_566ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_567.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_567ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_564.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_564ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_565.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_565ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_508.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_508ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_509.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_509ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_506.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_506ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_507.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_507ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_504.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_504ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_505.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_505ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_502.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_502ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_503.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_503ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_510.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_510ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_511.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_511ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_517.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_517ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_518.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_518ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_519.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_519ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_520.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_520ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_513.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_513ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_514.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_514ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_515.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_515ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_516.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_516ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_521.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_521ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_512.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_512ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_526.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_526ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_527.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_527ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_524.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_524ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_525.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_525ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_530.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_530ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_531.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_531ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_528.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_528ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_529.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_529ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_523.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_523ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_522.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_522ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_535.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_535ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_536.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_536ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_537.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_537ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_538.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_538ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_539.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_539ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_540.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_540ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_541.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_541ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_532.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_532ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_534.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_534ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_533.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_533ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_787.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_787ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_786.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_786ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_788.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_788ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_789.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_789ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_801.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_801ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_800.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_800ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_797.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_797ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_796.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_796ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_799.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_799ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_798.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_798ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_571.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_571ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_570.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_570ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_810.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_810ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_809.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_809ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_808.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_808ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_807.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_807ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_811.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_811ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_802.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_802ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_806.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_806ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_805.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_805ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_804.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_804ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_803.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_803ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_580.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_580ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_579.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_579ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_581.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_581ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_819.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_819ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_818.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_818ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_572.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_572ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_821.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_821ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_573.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_573ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_820.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_820ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_574.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_574ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_575.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_575ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_576.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_576ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_577.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_577ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_578.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_578ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_813.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_813ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_812.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_812ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_815.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_815ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_814.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_814ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_817.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_817ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_816.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_816ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_827.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_827ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_828.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_828ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_825.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_825ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_826.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_826ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_823.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_823ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_824.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_824ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_822.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_822ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_831.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_831ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_829.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_829ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_830.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_830ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_832.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_832ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_833.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_833ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_834.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_834ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_587.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_587ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_586.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_586ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_589.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_589ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_588.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_588ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_583.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_583ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_582.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_582ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_585.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_585ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_584.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_584ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_590.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_590ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_591.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_591ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1027.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1027ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1028.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1028ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1025.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1025ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1026.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1026ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1023.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1023ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1024.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1024ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1022.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1022ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1114.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1114ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1113.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1113ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1112.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1112ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1109.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1109ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_914.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_914ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1111.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1111ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1110.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1110ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_921.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_921ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1103.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1103ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1102.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1102ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_918.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_918ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_917.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_917ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_920.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_920ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1092.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1092ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1095.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1095ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1096.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1096ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1093.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1093ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1094.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1094ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1099.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1099ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1100.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1100ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1097.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1097ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1098.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1098ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1079.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1079ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1081.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1081ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1080.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1080ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1088.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1088ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1087.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1087ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1086.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1086ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1085.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1085ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1091.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1091ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1090.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1090ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1089.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1089ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1083.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1083ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1084.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1084ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1082.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1082ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1038.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1038ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1039.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1039ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1040.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1040ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1041.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1041ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1034.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1034ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1035.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1035ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1036.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1036ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1037.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1037ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1032.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1032ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1033.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1033ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1031.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1031ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1029.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1029ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1030.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1030ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1043.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1043ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1044.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1044ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1042.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1042ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1047.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1047ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1048.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1048ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1045.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1045ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1046.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1046ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_879.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_879ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_878.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_878ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_877.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_877ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_876.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_876ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_881.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_881ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_880.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_880ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_874.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_874ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_875.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_875ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_872.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_872ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_873.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_873ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_866.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_866ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_865.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_865ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_868.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_868ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_867.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_867ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_870.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_870ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_869.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_869ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_871.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_871ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_862.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_862ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_863.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_863ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_864.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_864ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_891.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_891ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_888.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_888ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_887.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_887ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_890.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_890ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_889.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_889ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_883.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_883ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_884.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_884ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_885.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_885ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_886.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_886ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_882.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_882ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_940.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_940ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_939.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_939ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_941.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_941ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1123.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1123ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1122.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1122ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1125.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1125ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1124.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1124ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1121.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1121ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1120.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1120ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1119.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1119ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1118.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1118ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1117.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1117ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1116.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1116ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1115.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1115ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_919.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_919ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_950.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_950ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_951.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_951ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_948.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_948ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_949.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_949ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_946.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_946ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_947.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_947ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_944.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_944ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_945.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_945ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_942.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_942ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_943.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_943ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_952.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_952ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_953.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_953ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_954.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_954ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1164.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1164ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1162.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1162ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1163.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1163ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1155.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1155ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1156.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1156ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1157.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1157ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1158.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1158ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1152.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1152ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1153.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1153ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1154.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1154ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1159.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1159ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1160.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1160ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1161.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1161ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1146.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1146ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1147.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1147ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1144.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1144ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1145.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1145ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1142.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1142ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1143.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1143ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1150.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1150ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1151.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1151ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1148.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1148ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1_1149.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1_1149ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTB1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTB9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB15, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB16, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB17, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTB18, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB19, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB20, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB21, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB22, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB23, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB24, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB25, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTB26, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB27, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB28, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB29, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB30, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB31, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB32, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB33, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB34, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTB35, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB36, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB37, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB38, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB39, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB40, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB41, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTB42, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTB43, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_628, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_627, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_626, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_625, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_624, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_623, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_622, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_621, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_631, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_632, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_633, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_634, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_635, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_636, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_637, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_638, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_630, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_646, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_645, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_644, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_643, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_642, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_641, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_640, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_639, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_654, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_653, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_652, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_651, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_650, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_649, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_648, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_647, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_655, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_656, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_657, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_658, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_659, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_660, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_661, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_662, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_663, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_671, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_670, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_669, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_668, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_667, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_666, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_665, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_664, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_672, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_673, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_674, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_675, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_676, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_677, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_678, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_679, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_680, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_688, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_687, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_686, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_475, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_474, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_683, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_682, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_681, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_689, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_690, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_691, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_484, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_489, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_490, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_491, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_492, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_493, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_501, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_500, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_499, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_498, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_497, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_496, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_495, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_494, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_502, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_503, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_504, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_505, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_506, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_507, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_508, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_509, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_510, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_518, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_517, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_516, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_515, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_514, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_513, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_512, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_511, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_527, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_526, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_525, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_524, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_523, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_522, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_521, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_520, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_519, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_529, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_530, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_531, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_532, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_533, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_534, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_535, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_536, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_528, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_544, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_543, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_542, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_541, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_540, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_539, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_538, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_537, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_552, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_551, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_550, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_549, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_548, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_547, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_546, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_545, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_553, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_554, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_555, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_556, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_557, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_558, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_559, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_560, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_561, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_569, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_568, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_567, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_566, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_565, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_564, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_563, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_562, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_570, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_571, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_572, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_573, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_574, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_575, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_576, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_577, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_578, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_586, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_585, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_789, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_788, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_584, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_787, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_583, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_786, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_582, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_581, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_580, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_579, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_587, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_588, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_589, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_590, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_591, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_796, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_797, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_798, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_799, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_807, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_806, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_805, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_804, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_803, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_802, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_801, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_800, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_808, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_809, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_810, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_811, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_812, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_813, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_814, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_815, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_816, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_824, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_823, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_822, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_821, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_820, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_819, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_818, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_817, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_825, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_833, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_832, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_831, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_830, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_829, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_828, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_827, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_826, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_1028, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1027, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1026, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1025, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1024, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1023, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1022, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_834, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_1029, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1030, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1031, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1032, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1033, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1034, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1035, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1036, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1037, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_1045, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1044, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1043, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1042, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1041, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1040, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1039, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1038, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_1046, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1047, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1048, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_862, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_863, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_864, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_865, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_866, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_867, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_875, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_874, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_873, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_872, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_871, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_870, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_869, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_868, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_876, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_877, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_878, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_879, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_880, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_881, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_882, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_883, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_884, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_1079, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_891, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_890, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_889, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_888, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_887, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_886, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_885, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_1080, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1081, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1082, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1083, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1084, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1085, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1086, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1087, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1088, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_1096, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1095, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1094, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1093, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1092, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1091, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1090, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1089, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_918, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_917, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1103, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1102, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_914, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1100, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1099, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1098, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1097, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_920, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_921, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1109, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1110, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1111, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1112, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1113, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1114, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_919, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1122, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1121, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1120, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1119, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1118, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1117, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1116, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1115, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_943, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_942, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_941, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_940, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_939, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1125, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1124, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1123, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_944, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_945, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_946, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_947, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_948, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_949, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_950, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_951, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_952, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_1147, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1146, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1145, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1144, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1143, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1142, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_954, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_953, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_1148, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1149, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1150, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1151, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1152, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1153, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1154, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1155, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1156, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_1164, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1163, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1162, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1161, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1160, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1159, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1158, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_1157, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(jTB1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(jTB9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jTB10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jTB11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jTB12, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jTB13, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jTB14, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jTB15, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jTB16, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jTB17, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(jTB18, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB19, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB20, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB22, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB23, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB24, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB25, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(jTB26, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jTB27, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jTB28, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jTB29, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jTB30, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jTB31, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jTB32, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jTB33, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jTB34, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(jTB35, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB36, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB37, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB38, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB39, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB40, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB41, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTB42, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jTB43, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_628, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_627, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_626, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_625, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_624, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_623, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_622, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_621, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_631, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jToggleButton1_632, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jToggleButton1_633, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jToggleButton1_634, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jToggleButton1_635, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jToggleButton1_636, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jToggleButton1_637, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jToggleButton1_638, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_630, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_646, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_645, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_644, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_643, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_642, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_641, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_640, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_639, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_654, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jToggleButton1_653, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jToggleButton1_652, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jToggleButton1_651, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jToggleButton1_650, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jToggleButton1_649, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jToggleButton1_648, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jToggleButton1_647, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_655, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_656, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_657, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_658, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_659, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_660, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_661, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_662, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_663, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_671, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_670, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_669, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_668, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_667, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_666, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_665, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_664, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_672, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_673, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_674, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_675, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_676, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_677, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_678, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_679, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_680, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_688, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_687, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_686, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_475, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_474, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_683, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_682, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_681, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_689, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_690, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_691, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_484, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_489, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_490, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_491, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_492, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_493, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_501, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_500, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_499, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_498, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_497, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_496, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_495, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_494, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_502, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_503, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_504, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_505, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_506, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_507, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_508, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_509, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_510, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_518, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_517, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_516, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_515, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_514, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_513, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_512, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_511, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_527, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_526, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_525, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_524, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_523, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_522, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_521, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_520, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_519, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_529, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_530, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_531, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_532, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_533, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_534, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_535, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_536, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_528, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_544, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_543, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_542, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_541, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_540, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_539, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_538, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_537, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_552, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_551, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_550, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_549, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_548, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_547, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_546, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_545, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_553, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_554, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_555, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_556, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_557, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_558, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_559, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_560, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_561, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_569, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_568, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_567, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_566, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_565, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_564, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_563, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_562, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_570, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_571, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_572, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_573, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_574, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_575, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_576, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_577, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_578, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_586, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_585, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_789, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_788, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_584, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_787, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_583, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1_786, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1_582, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jToggleButton1_581, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_580, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_579, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_587, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_588, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_589, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_590, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_591, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_796, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_797, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_798, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_799, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_807, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_806, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_805, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_804, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_803, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_802, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_801, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_800, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_808, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_809, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_810, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_811, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_812, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_813, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_814, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_815, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_816, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_824, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_823, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_822, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_821, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_820, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_819, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_818, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_817, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_825, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_833, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_832, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_831, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_830, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_829, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_828, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_827, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_826, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_1028, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1027, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1026, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1025, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1024, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1023, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1022, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_834, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_1029, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1030, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1031, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1032, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1033, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1034, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1035, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1036, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_1037, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_1045, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1044, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1043, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1042, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1041, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1040, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1039, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1038, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_1046, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1047, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1048, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_862, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_863, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_864, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_865, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_866, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_867, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_875, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_874, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_873, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_872, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_871, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_870, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_869, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_868, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_876, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_877, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_878, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_879, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_880, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_881, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_882, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_883, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_884, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_1079, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_891, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_890, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_889, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_888, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_887, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_886, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_885, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_1080, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1081, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1082, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1083, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1084, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1085, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1086, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1087, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_1088, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_1096, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1095, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1094, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1093, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1092, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1091, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1090, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1089, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_918, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_917, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1103, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1102, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_914, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1100, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1099, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1098, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_1097, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_920, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_921, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1109, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1110, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1111, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1112, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1113, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1114, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_919, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1122, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1121, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1120, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1119, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1118, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1117, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1116, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_1115, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_943, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_942, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_941, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_940, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_939, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1125, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1124, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1123, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_944, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_945, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_946, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_947, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_948, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_949, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_950, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_951, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_952, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_1147, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1146, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1145, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1144, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1143, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1142, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_954, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_953, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_1148, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1149, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1150, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1151, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1152, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1153, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1154, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jToggleButton1_1155, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jToggleButton1_1156, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jToggleButton1_1164, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1163, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1162, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1161, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1160, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1159, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1158, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1_1157, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField))
+                .addContainerGap(145, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(356, Short.MAX_VALUE))
+        );
+
+        jScrollPane1.setViewportView(jPanel5);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1354, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Tablero", jPanel4);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1369, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -231,6 +4324,1653 @@ public class GuiRobot extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonArchivoActionPerformed
 
+    private void jTB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB1ActionPerformed
+        cambiarColor(jTB1);
+        cambiarValor(0, 0, jTB1.isSelected());
+    }//GEN-LAST:event_jTB1ActionPerformed
+
+    private void jTB2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB2ActionPerformed
+        cambiarColor(jTB2);
+        cambiarValor(0, 1, jTB2.isSelected());
+    }//GEN-LAST:event_jTB2ActionPerformed
+
+    private void jTB3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB3ActionPerformed
+        cambiarColor(jTB3);
+        cambiarValor(0, 2, jTB3.isSelected());
+    }//GEN-LAST:event_jTB3ActionPerformed
+
+    private void jTB4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB4ActionPerformed
+        cambiarColor(jTB4);
+        cambiarValor(0, 3, jTB4.isSelected());
+    }//GEN-LAST:event_jTB4ActionPerformed
+
+    private void jTB5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB5ActionPerformed
+        cambiarColor(jTB5);
+        cambiarValor(0, 4, jTB5.isSelected());
+    }//GEN-LAST:event_jTB5ActionPerformed
+
+    private void jTB6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB6ActionPerformed
+        cambiarColor(jTB6);
+        cambiarValor(0, 5, jTB6.isSelected());
+    }//GEN-LAST:event_jTB6ActionPerformed
+
+    private void jTB7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB7ActionPerformed
+        cambiarColor(jTB7);
+        cambiarValor(0, 6, jTB7.isSelected());
+    }//GEN-LAST:event_jTB7ActionPerformed
+
+    private void jTB8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB8ActionPerformed
+        cambiarColor(jTB8);
+        cambiarValor(0, 7, jTB8.isSelected());
+    }//GEN-LAST:event_jTB8ActionPerformed
+
+    private void jTB17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB17ActionPerformed
+        cambiarColor(jTB17);
+        cambiarValor(1, 8, jTB17.isSelected());
+    }//GEN-LAST:event_jTB17ActionPerformed
+
+    private void jTB16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB16ActionPerformed
+        cambiarColor(jTB16);
+        cambiarValor(1, 7, jTB16.isSelected());
+    }//GEN-LAST:event_jTB16ActionPerformed
+
+    private void jTB15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB15ActionPerformed
+       cambiarColor(jTB15);
+        cambiarValor(1, 6, jTB15.isSelected());
+    }//GEN-LAST:event_jTB15ActionPerformed
+
+    private void jTB14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB14ActionPerformed
+        cambiarColor(jTB14);
+        cambiarValor(1, 5, jTB14.isSelected());
+    }//GEN-LAST:event_jTB14ActionPerformed
+
+    private void jTB13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB13ActionPerformed
+        cambiarColor(jTB13);
+        cambiarValor(1, 4, jTB13.isSelected());
+    }//GEN-LAST:event_jTB13ActionPerformed
+
+    private void jTB12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB12ActionPerformed
+        cambiarColor(jTB12);
+        cambiarValor(1, 3, jTB12.isSelected());
+    }//GEN-LAST:event_jTB12ActionPerformed
+
+    private void jTB11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB11ActionPerformed
+        cambiarColor(jTB11);
+        cambiarValor(1, 2, jTB11.isSelected());
+    }//GEN-LAST:event_jTB11ActionPerformed
+
+    private void jTB10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB10ActionPerformed
+        cambiarColor(jTB10);
+        cambiarValor(1, 1, jTB10.isSelected());
+    }//GEN-LAST:event_jTB10ActionPerformed
+
+    private void jTB9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB9ActionPerformed
+        cambiarColor(jTB9);
+        cambiarValor(1, 0, jTB9.isSelected());
+    }//GEN-LAST:event_jTB9ActionPerformed
+
+    private void jTB26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB26ActionPerformed
+       cambiarColor(jTB26);
+        cambiarValor(3, 0, jTB26.isSelected());
+    }//GEN-LAST:event_jTB26ActionPerformed
+
+    private void jTB18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB18ActionPerformed
+        cambiarColor(jTB18);
+        cambiarValor(2, 0, jTB18.isSelected());
+    }//GEN-LAST:event_jTB18ActionPerformed
+
+    private void jTB19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB19ActionPerformed
+        cambiarColor(jTB19);
+        cambiarValor(2, 1, jTB19.isSelected());
+    }//GEN-LAST:event_jTB19ActionPerformed
+
+    private void jTB20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB20ActionPerformed
+        cambiarColor(jTB20);
+        cambiarValor(2, 2, jTB20.isSelected());
+    }//GEN-LAST:event_jTB20ActionPerformed
+
+    private void jTB21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB21ActionPerformed
+        cambiarColor(jTB21);
+        cambiarValor(2, 3, jTB21.isSelected());
+    }//GEN-LAST:event_jTB21ActionPerformed
+
+    private void jTB22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB22ActionPerformed
+        cambiarColor(jTB22);
+        cambiarValor(2, 4, jTB22.isSelected());
+    }//GEN-LAST:event_jTB22ActionPerformed
+
+    private void jTB23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB23ActionPerformed
+        cambiarColor(jTB23);
+        cambiarValor(2, 5, jTB23.isSelected());
+    }//GEN-LAST:event_jTB23ActionPerformed
+
+    private void jTB24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB24ActionPerformed
+        cambiarColor(jTB24);
+        cambiarValor(2, 6, jTB24.isSelected());
+    }//GEN-LAST:event_jTB24ActionPerformed
+
+    private void jTB25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB25ActionPerformed
+        cambiarColor(jTB25);
+        cambiarValor(2, 7, jTB25.isSelected());
+    }//GEN-LAST:event_jTB25ActionPerformed
+
+    private void jTB34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB34ActionPerformed
+        cambiarColor(jTB34);
+        cambiarValor(3, 8, jTB34.isSelected());
+    }//GEN-LAST:event_jTB34ActionPerformed
+
+    private void jTB33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB33ActionPerformed
+        cambiarColor(jTB33);
+        cambiarValor(3, 7, jTB33.isSelected());
+    }//GEN-LAST:event_jTB33ActionPerformed
+
+    private void jTB32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB32ActionPerformed
+        cambiarColor(jTB32);
+        cambiarValor(3, 6, jTB32.isSelected());
+    }//GEN-LAST:event_jTB32ActionPerformed
+
+    private void jTB31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB31ActionPerformed
+        cambiarColor(jTB31);
+        cambiarValor(3, 5, jTB31.isSelected());
+    }//GEN-LAST:event_jTB31ActionPerformed
+
+    private void jTB30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB30ActionPerformed
+        cambiarColor(jTB30);
+        cambiarValor(3, 4, jTB30.isSelected());
+    }//GEN-LAST:event_jTB30ActionPerformed
+
+    private void jTB29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB29ActionPerformed
+        cambiarColor(jTB29);
+        cambiarValor(3, 3, jTB29.isSelected());
+    }//GEN-LAST:event_jTB29ActionPerformed
+
+    private void jTB28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB28ActionPerformed
+        cambiarColor(jTB28);
+        cambiarValor(3, 2, jTB28.isSelected());
+    }//GEN-LAST:event_jTB28ActionPerformed
+
+    private void jTB27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB27ActionPerformed
+        cambiarColor(jTB27);
+        cambiarValor(3, 1, jTB27.isSelected());
+    }//GEN-LAST:event_jTB27ActionPerformed
+
+    private void jTB42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB42ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTB42ActionPerformed
+
+    private void jTB41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB41ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTB41ActionPerformed
+
+    private void jTB40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB40ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTB40ActionPerformed
+
+    private void jTB39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB39ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTB39ActionPerformed
+
+    private void jTB38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB38ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTB38ActionPerformed
+
+    private void jTB37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB37ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTB37ActionPerformed
+
+    private void jTB36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB36ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTB36ActionPerformed
+
+    private void jTB35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB35ActionPerformed
+        cambiarColor(jTB35);
+        cambiarValor(4, 0, jTB35.isSelected());
+    }//GEN-LAST:event_jTB35ActionPerformed
+
+    private void jToggleButton1_474ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_474ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_474ActionPerformed
+
+    private void jToggleButton1_475ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_475ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_475ActionPerformed
+
+    private void jToggleButton1_484ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_484ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_484ActionPerformed
+
+    private void jToggleButton1_489ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_489ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_489ActionPerformed
+
+    private void jToggleButton1_490ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_490ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_490ActionPerformed
+
+    private void jToggleButton1_491ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_491ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_491ActionPerformed
+
+    private void jToggleButton1_492ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_492ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_492ActionPerformed
+
+    private void jToggleButton1_495ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_495ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_495ActionPerformed
+
+    private void jToggleButton1_496ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_496ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_496ActionPerformed
+
+    private void jToggleButton1_497ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_497ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_497ActionPerformed
+
+    private void jToggleButton1_498ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_498ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_498ActionPerformed
+
+    private void jToggleButton1_499ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_499ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_499ActionPerformed
+
+    private void jToggleButton1_500ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_500ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_500ActionPerformed
+
+    private void jToggleButton1_501ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_501ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_501ActionPerformed
+
+    private void jToggleButton1_502ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_502ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_502ActionPerformed
+
+    private void jToggleButton1_503ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_503ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_503ActionPerformed
+
+    private void jToggleButton1_504ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_504ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_504ActionPerformed
+
+    private void jToggleButton1_505ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_505ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_505ActionPerformed
+
+    private void jToggleButton1_506ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_506ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_506ActionPerformed
+
+    private void jToggleButton1_507ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_507ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_507ActionPerformed
+
+    private void jToggleButton1_508ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_508ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_508ActionPerformed
+
+    private void jToggleButton1_509ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_509ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_509ActionPerformed
+
+    private void jToggleButton1_510ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_510ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_510ActionPerformed
+
+    private void jToggleButton1_512ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_512ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_512ActionPerformed
+
+    private void jToggleButton1_513ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_513ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_513ActionPerformed
+
+    private void jToggleButton1_514ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_514ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_514ActionPerformed
+
+    private void jToggleButton1_515ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_515ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_515ActionPerformed
+
+    private void jToggleButton1_516ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_516ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_516ActionPerformed
+
+    private void jToggleButton1_517ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_517ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_517ActionPerformed
+
+    private void jToggleButton1_518ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_518ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_518ActionPerformed
+
+    private void jToggleButton1_520ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_520ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_520ActionPerformed
+
+    private void jToggleButton1_521ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_521ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_521ActionPerformed
+
+    private void jToggleButton1_522ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_522ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_522ActionPerformed
+
+    private void jToggleButton1_523ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_523ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_523ActionPerformed
+
+    private void jToggleButton1_524ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_524ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_524ActionPerformed
+
+    private void jToggleButton1_525ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_525ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_525ActionPerformed
+
+    private void jToggleButton1_526ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_526ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_526ActionPerformed
+
+    private void jToggleButton1_527ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_527ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_527ActionPerformed
+
+    private void jToggleButton1_528ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_528ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_528ActionPerformed
+
+    private void jToggleButton1_529ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_529ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_529ActionPerformed
+
+    private void jToggleButton1_530ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_530ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_530ActionPerformed
+
+    private void jToggleButton1_531ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_531ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_531ActionPerformed
+
+    private void jToggleButton1_532ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_532ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_532ActionPerformed
+
+    private void jToggleButton1_533ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_533ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_533ActionPerformed
+
+    private void jToggleButton1_534ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_534ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_534ActionPerformed
+
+    private void jToggleButton1_535ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_535ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_535ActionPerformed
+
+    private void jToggleButton1_538ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_538ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_538ActionPerformed
+
+    private void jToggleButton1_539ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_539ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_539ActionPerformed
+
+    private void jToggleButton1_540ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_540ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_540ActionPerformed
+
+    private void jToggleButton1_541ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_541ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_541ActionPerformed
+
+    private void jToggleButton1_542ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_542ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_542ActionPerformed
+
+    private void jToggleButton1_543ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_543ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_543ActionPerformed
+
+    private void jToggleButton1_544ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_544ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_544ActionPerformed
+
+    private void jToggleButton1_546ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_546ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_546ActionPerformed
+
+    private void jToggleButton1_547ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_547ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_547ActionPerformed
+
+    private void jToggleButton1_548ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_548ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_548ActionPerformed
+
+    private void jToggleButton1_549ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_549ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_549ActionPerformed
+
+    private void jToggleButton1_550ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_550ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_550ActionPerformed
+
+    private void jToggleButton1_551ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_551ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_551ActionPerformed
+
+    private void jToggleButton1_552ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_552ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_552ActionPerformed
+
+    private void jToggleButton1_553ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_553ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_553ActionPerformed
+
+    private void jToggleButton1_554ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_554ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_554ActionPerformed
+
+    private void jToggleButton1_555ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_555ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_555ActionPerformed
+
+    private void jToggleButton1_556ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_556ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_556ActionPerformed
+
+    private void jToggleButton1_557ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_557ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_557ActionPerformed
+
+    private void jToggleButton1_558ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_558ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_558ActionPerformed
+
+    private void jToggleButton1_559ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_559ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_559ActionPerformed
+
+    private void jToggleButton1_560ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_560ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_560ActionPerformed
+
+    private void jToggleButton1_562ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_562ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_562ActionPerformed
+
+    private void jToggleButton1_563ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_563ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_563ActionPerformed
+
+    private void jToggleButton1_564ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_564ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_564ActionPerformed
+
+    private void jToggleButton1_565ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_565ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_565ActionPerformed
+
+    private void jToggleButton1_566ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_566ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_566ActionPerformed
+
+    private void jToggleButton1_567ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_567ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_567ActionPerformed
+
+    private void jToggleButton1_568ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_568ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_568ActionPerformed
+
+    private void jToggleButton1_569ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_569ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_569ActionPerformed
+
+    private void jToggleButton1_570ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_570ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_570ActionPerformed
+
+    private void jToggleButton1_571ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_571ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_571ActionPerformed
+
+    private void jToggleButton1_572ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_572ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_572ActionPerformed
+
+    private void jToggleButton1_573ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_573ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_573ActionPerformed
+
+    private void jToggleButton1_574ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_574ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_574ActionPerformed
+
+    private void jToggleButton1_575ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_575ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_575ActionPerformed
+
+    private void jToggleButton1_576ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_576ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_576ActionPerformed
+
+    private void jToggleButton1_577ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_577ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_577ActionPerformed
+
+    private void jToggleButton1_578ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_578ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_578ActionPerformed
+
+    private void jToggleButton1_579ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_579ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_579ActionPerformed
+
+    private void jToggleButton1_580ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_580ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_580ActionPerformed
+
+    private void jToggleButton1_581ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_581ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_581ActionPerformed
+
+    private void jToggleButton1_582ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_582ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_582ActionPerformed
+
+    private void jToggleButton1_583ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_583ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_583ActionPerformed
+
+    private void jToggleButton1_584ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_584ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_584ActionPerformed
+
+    private void jToggleButton1_585ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_585ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_585ActionPerformed
+
+    private void jToggleButton1_586ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_586ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_586ActionPerformed
+
+    private void jToggleButton1_587ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_587ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_587ActionPerformed
+
+    private void jToggleButton1_588ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_588ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_588ActionPerformed
+
+    private void jToggleButton1_589ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_589ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_589ActionPerformed
+
+    private void jToggleButton1_590ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_590ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_590ActionPerformed
+
+    private void jToggleButton1_591ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_591ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_591ActionPerformed
+
+    private void jToggleButton1_621ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_621ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_621ActionPerformed
+
+    private void jToggleButton1_622ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_622ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_622ActionPerformed
+
+    private void jToggleButton1_623ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_623ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_623ActionPerformed
+
+    private void jToggleButton1_624ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_624ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_624ActionPerformed
+
+    private void jToggleButton1_625ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_625ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_625ActionPerformed
+
+    private void jToggleButton1_626ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_626ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_626ActionPerformed
+
+    private void jToggleButton1_627ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_627ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_627ActionPerformed
+
+    private void jToggleButton1_628ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_628ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_628ActionPerformed
+
+    private void jTB43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTB43ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTB43ActionPerformed
+
+    private void jToggleButton1_630ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_630ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_630ActionPerformed
+
+    private void jToggleButton1_631ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_631ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_631ActionPerformed
+
+    private void jToggleButton1_632ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_632ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_632ActionPerformed
+
+    private void jToggleButton1_633ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_633ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_633ActionPerformed
+
+    private void jToggleButton1_634ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_634ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_634ActionPerformed
+
+    private void jToggleButton1_635ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_635ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_635ActionPerformed
+
+    private void jToggleButton1_636ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_636ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_636ActionPerformed
+
+    private void jToggleButton1_637ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_637ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_637ActionPerformed
+
+    private void jToggleButton1_640ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_640ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_640ActionPerformed
+
+    private void jToggleButton1_641ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_641ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_641ActionPerformed
+
+    private void jToggleButton1_642ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_642ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_642ActionPerformed
+
+    private void jToggleButton1_643ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_643ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_643ActionPerformed
+
+    private void jToggleButton1_644ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_644ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_644ActionPerformed
+
+    private void jToggleButton1_645ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_645ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_645ActionPerformed
+
+    private void jToggleButton1_646ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_646ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_646ActionPerformed
+
+    private void jToggleButton1_648ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_648ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_648ActionPerformed
+
+    private void jToggleButton1_649ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_649ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_649ActionPerformed
+
+    private void jToggleButton1_650ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_650ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_650ActionPerformed
+
+    private void jToggleButton1_651ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_651ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_651ActionPerformed
+
+    private void jToggleButton1_652ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_652ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_652ActionPerformed
+
+    private void jToggleButton1_653ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_653ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_653ActionPerformed
+
+    private void jToggleButton1_654ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_654ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_654ActionPerformed
+
+    private void jToggleButton1_655ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_655ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_655ActionPerformed
+
+    private void jToggleButton1_656ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_656ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_656ActionPerformed
+
+    private void jToggleButton1_657ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_657ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_657ActionPerformed
+
+    private void jToggleButton1_658ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_658ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_658ActionPerformed
+
+    private void jToggleButton1_659ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_659ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_659ActionPerformed
+
+    private void jToggleButton1_660ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_660ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_660ActionPerformed
+
+    private void jToggleButton1_661ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_661ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_661ActionPerformed
+
+    private void jToggleButton1_662ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_662ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_662ActionPerformed
+
+    private void jToggleButton1_665ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_665ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_665ActionPerformed
+
+    private void jToggleButton1_666ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_666ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_666ActionPerformed
+
+    private void jToggleButton1_667ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_667ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_667ActionPerformed
+
+    private void jToggleButton1_668ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_668ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_668ActionPerformed
+
+    private void jToggleButton1_669ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_669ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_669ActionPerformed
+
+    private void jToggleButton1_670ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_670ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_670ActionPerformed
+
+    private void jToggleButton1_671ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_671ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_671ActionPerformed
+
+    private void jToggleButton1_682ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_682ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_682ActionPerformed
+
+    private void jToggleButton1_683ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_683ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_683ActionPerformed
+
+    private void jToggleButton1_686ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_686ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_686ActionPerformed
+
+    private void jToggleButton1_687ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_687ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_687ActionPerformed
+
+    private void jToggleButton1_688ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_688ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_688ActionPerformed
+
+    private void jToggleButton1_689ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_689ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_689ActionPerformed
+
+    private void jToggleButton1_690ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_690ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_690ActionPerformed
+
+    private void jToggleButton1_691ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_691ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_691ActionPerformed
+
+    private void jToggleButton1_786ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_786ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_786ActionPerformed
+
+    private void jToggleButton1_787ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_787ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_787ActionPerformed
+
+    private void jToggleButton1_788ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_788ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_788ActionPerformed
+
+    private void jToggleButton1_789ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_789ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_789ActionPerformed
+
+    private void jToggleButton1_796ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_796ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_796ActionPerformed
+
+    private void jToggleButton1_797ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_797ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_797ActionPerformed
+
+    private void jToggleButton1_798ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_798ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_798ActionPerformed
+
+    private void jToggleButton1_799ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_799ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_799ActionPerformed
+
+    private void jToggleButton1_800ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_800ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_800ActionPerformed
+
+    private void jToggleButton1_801ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_801ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_801ActionPerformed
+
+    private void jToggleButton1_802ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_802ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_802ActionPerformed
+
+    private void jToggleButton1_803ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_803ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_803ActionPerformed
+
+    private void jToggleButton1_804ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_804ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_804ActionPerformed
+
+    private void jToggleButton1_805ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_805ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_805ActionPerformed
+
+    private void jToggleButton1_806ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_806ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_806ActionPerformed
+
+    private void jToggleButton1_807ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_807ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_807ActionPerformed
+
+    private void jToggleButton1_808ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_808ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_808ActionPerformed
+
+    private void jToggleButton1_809ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_809ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_809ActionPerformed
+
+    private void jToggleButton1_810ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_810ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_810ActionPerformed
+
+    private void jToggleButton1_811ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_811ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_811ActionPerformed
+
+    private void jToggleButton1_812ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_812ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_812ActionPerformed
+
+    private void jToggleButton1_813ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_813ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_813ActionPerformed
+
+    private void jToggleButton1_814ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_814ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_814ActionPerformed
+
+    private void jToggleButton1_815ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_815ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_815ActionPerformed
+
+    private void jToggleButton1_816ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_816ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_816ActionPerformed
+
+    private void jToggleButton1_818ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_818ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_818ActionPerformed
+
+    private void jToggleButton1_819ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_819ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_819ActionPerformed
+
+    private void jToggleButton1_820ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_820ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_820ActionPerformed
+
+    private void jToggleButton1_821ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_821ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_821ActionPerformed
+
+    private void jToggleButton1_822ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_822ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_822ActionPerformed
+
+    private void jToggleButton1_823ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_823ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_823ActionPerformed
+
+    private void jToggleButton1_824ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_824ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_824ActionPerformed
+
+    private void jToggleButton1_825ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_825ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_825ActionPerformed
+
+    private void jToggleButton1_826ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_826ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_826ActionPerformed
+
+    private void jToggleButton1_827ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_827ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_827ActionPerformed
+
+    private void jToggleButton1_828ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_828ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_828ActionPerformed
+
+    private void jToggleButton1_829ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_829ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_829ActionPerformed
+
+    private void jToggleButton1_830ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_830ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_830ActionPerformed
+
+    private void jToggleButton1_831ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_831ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_831ActionPerformed
+
+    private void jToggleButton1_832ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_832ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_832ActionPerformed
+
+    private void jToggleButton1_833ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_833ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_833ActionPerformed
+
+    private void jToggleButton1_834ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_834ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_834ActionPerformed
+
+    private void jToggleButton1_862ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_862ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_862ActionPerformed
+
+    private void jToggleButton1_863ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_863ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_863ActionPerformed
+
+    private void jToggleButton1_864ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_864ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_864ActionPerformed
+
+    private void jToggleButton1_865ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_865ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_865ActionPerformed
+
+    private void jToggleButton1_866ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_866ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_866ActionPerformed
+
+    private void jToggleButton1_867ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_867ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_867ActionPerformed
+
+    private void jToggleButton1_868ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_868ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_868ActionPerformed
+
+    private void jToggleButton1_869ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_869ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_869ActionPerformed
+
+    private void jToggleButton1_870ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_870ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_870ActionPerformed
+
+    private void jToggleButton1_871ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_871ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_871ActionPerformed
+
+    private void jToggleButton1_872ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_872ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_872ActionPerformed
+
+    private void jToggleButton1_873ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_873ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_873ActionPerformed
+
+    private void jToggleButton1_874ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_874ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_874ActionPerformed
+
+    private void jToggleButton1_875ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_875ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_875ActionPerformed
+
+    private void jToggleButton1_876ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_876ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_876ActionPerformed
+
+    private void jToggleButton1_877ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_877ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_877ActionPerformed
+
+    private void jToggleButton1_878ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_878ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_878ActionPerformed
+
+    private void jToggleButton1_879ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_879ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_879ActionPerformed
+
+    private void jToggleButton1_880ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_880ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_880ActionPerformed
+
+    private void jToggleButton1_881ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_881ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_881ActionPerformed
+
+    private void jToggleButton1_882ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_882ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_882ActionPerformed
+
+    private void jToggleButton1_883ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_883ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_883ActionPerformed
+
+    private void jToggleButton1_884ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_884ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_884ActionPerformed
+
+    private void jToggleButton1_885ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_885ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_885ActionPerformed
+
+    private void jToggleButton1_886ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_886ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_886ActionPerformed
+
+    private void jToggleButton1_887ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_887ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_887ActionPerformed
+
+    private void jToggleButton1_888ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_888ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_888ActionPerformed
+
+    private void jToggleButton1_889ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_889ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_889ActionPerformed
+
+    private void jToggleButton1_890ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_890ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_890ActionPerformed
+
+    private void jToggleButton1_891ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_891ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_891ActionPerformed
+
+    private void jToggleButton1_914ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_914ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_914ActionPerformed
+
+    private void jToggleButton1_917ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_917ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_917ActionPerformed
+
+    private void jToggleButton1_918ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_918ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_918ActionPerformed
+
+    private void jToggleButton1_919ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_919ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_919ActionPerformed
+
+    private void jToggleButton1_920ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_920ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_920ActionPerformed
+
+    private void jToggleButton1_921ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_921ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_921ActionPerformed
+
+    private void jToggleButton1_939ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_939ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_939ActionPerformed
+
+    private void jToggleButton1_940ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_940ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_940ActionPerformed
+
+    private void jToggleButton1_941ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_941ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_941ActionPerformed
+
+    private void jToggleButton1_942ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_942ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_942ActionPerformed
+
+    private void jToggleButton1_943ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_943ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_943ActionPerformed
+
+    private void jToggleButton1_944ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_944ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_944ActionPerformed
+
+    private void jToggleButton1_945ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_945ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_945ActionPerformed
+
+    private void jToggleButton1_947ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_947ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_947ActionPerformed
+
+    private void jToggleButton1_948ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_948ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_948ActionPerformed
+
+    private void jToggleButton1_949ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_949ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_949ActionPerformed
+
+    private void jToggleButton1_950ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_950ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_950ActionPerformed
+
+    private void jToggleButton1_951ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_951ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_951ActionPerformed
+
+    private void jToggleButton1_954ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_954ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_954ActionPerformed
+
+    private void jToggleButton1_1022ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1022ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1022ActionPerformed
+
+    private void jToggleButton1_1023ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1023ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1023ActionPerformed
+
+    private void jToggleButton1_1024ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1024ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1024ActionPerformed
+
+    private void jToggleButton1_1025ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1025ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1025ActionPerformed
+
+    private void jToggleButton1_1026ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1026ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1026ActionPerformed
+
+    private void jToggleButton1_1027ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1027ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1027ActionPerformed
+
+    private void jToggleButton1_1028ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1028ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1028ActionPerformed
+
+    private void jToggleButton1_1029ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1029ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1029ActionPerformed
+
+    private void jToggleButton1_1030ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1030ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1030ActionPerformed
+
+    private void jToggleButton1_1031ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1031ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1031ActionPerformed
+
+    private void jToggleButton1_1032ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1032ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1032ActionPerformed
+
+    private void jToggleButton1_1033ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1033ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1033ActionPerformed
+
+    private void jToggleButton1_1034ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1034ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1034ActionPerformed
+
+    private void jToggleButton1_1035ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1035ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1035ActionPerformed
+
+    private void jToggleButton1_1036ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1036ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1036ActionPerformed
+
+    private void jToggleButton1_1037ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1037ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1037ActionPerformed
+
+    private void jToggleButton1_1038ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1038ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1038ActionPerformed
+
+    private void jToggleButton1_1039ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1039ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1039ActionPerformed
+
+    private void jToggleButton1_1040ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1040ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1040ActionPerformed
+
+    private void jToggleButton1_1041ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1041ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1041ActionPerformed
+
+    private void jToggleButton1_1042ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1042ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1042ActionPerformed
+
+    private void jToggleButton1_1043ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1043ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1043ActionPerformed
+
+    private void jToggleButton1_1044ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1044ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1044ActionPerformed
+
+    private void jToggleButton1_1045ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1045ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1045ActionPerformed
+
+    private void jToggleButton1_1046ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1046ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1046ActionPerformed
+
+    private void jToggleButton1_1047ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1047ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1047ActionPerformed
+
+    private void jToggleButton1_1048ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1048ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1048ActionPerformed
+
+    private void jToggleButton1_1079ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1079ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1079ActionPerformed
+
+    private void jToggleButton1_1080ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1080ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1080ActionPerformed
+
+    private void jToggleButton1_1081ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1081ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1081ActionPerformed
+
+    private void jToggleButton1_1082ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1082ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1082ActionPerformed
+
+    private void jToggleButton1_1083ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1083ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1083ActionPerformed
+
+    private void jToggleButton1_1084ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1084ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1084ActionPerformed
+
+    private void jToggleButton1_1085ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1085ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1085ActionPerformed
+
+    private void jToggleButton1_1086ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1086ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1086ActionPerformed
+
+    private void jToggleButton1_1087ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1087ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1087ActionPerformed
+
+    private void jToggleButton1_1088ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1088ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1088ActionPerformed
+
+    private void jToggleButton1_1089ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1089ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1089ActionPerformed
+
+    private void jToggleButton1_1090ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1090ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1090ActionPerformed
+
+    private void jToggleButton1_1091ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1091ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1091ActionPerformed
+
+    private void jToggleButton1_1092ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1092ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1092ActionPerformed
+
+    private void jToggleButton1_1093ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1093ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1093ActionPerformed
+
+    private void jToggleButton1_1094ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1094ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1094ActionPerformed
+
+    private void jToggleButton1_1095ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1095ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1095ActionPerformed
+
+    private void jToggleButton1_1096ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1096ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1096ActionPerformed
+
+    private void jToggleButton1_1097ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1097ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1097ActionPerformed
+
+    private void jToggleButton1_1098ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1098ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1098ActionPerformed
+
+    private void jToggleButton1_1099ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1099ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1099ActionPerformed
+
+    private void jToggleButton1_1100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1100ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1100ActionPerformed
+
+    private void jToggleButton1_1102ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1102ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1102ActionPerformed
+
+    private void jToggleButton1_1103ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1103ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1103ActionPerformed
+
+    private void jToggleButton1_1109ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1109ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1109ActionPerformed
+
+    private void jToggleButton1_1110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1110ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1110ActionPerformed
+
+    private void jToggleButton1_1111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1111ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1111ActionPerformed
+
+    private void jToggleButton1_1112ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1112ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1112ActionPerformed
+
+    private void jToggleButton1_1113ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1113ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1113ActionPerformed
+
+    private void jToggleButton1_1114ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1114ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1114ActionPerformed
+
+    private void jToggleButton1_1115ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1115ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1115ActionPerformed
+
+    private void jToggleButton1_1116ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1116ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1116ActionPerformed
+
+    private void jToggleButton1_1117ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1117ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1117ActionPerformed
+
+    private void jToggleButton1_1118ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1118ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1118ActionPerformed
+
+    private void jToggleButton1_1119ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1119ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1119ActionPerformed
+
+    private void jToggleButton1_1120ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1120ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1120ActionPerformed
+
+    private void jToggleButton1_1121ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1121ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1121ActionPerformed
+
+    private void jToggleButton1_1122ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1122ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1122ActionPerformed
+
+    private void jToggleButton1_1124ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1124ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1124ActionPerformed
+
+    private void jToggleButton1_1125ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1125ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1125ActionPerformed
+
+    private void jToggleButton1_1142ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1142ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1142ActionPerformed
+
+    private void jToggleButton1_1143ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1143ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1143ActionPerformed
+
+    private void jToggleButton1_1144ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1144ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1144ActionPerformed
+
+    private void jToggleButton1_1146ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1146ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1146ActionPerformed
+
+    private void jToggleButton1_1147ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1147ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1147ActionPerformed
+
+    private void jToggleButton1_1148ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1148ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1148ActionPerformed
+
+    private void jToggleButton1_1149ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1149ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1149ActionPerformed
+
+    private void jToggleButton1_1151ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1151ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1151ActionPerformed
+
+    private void jToggleButton1_1152ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1152ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1152ActionPerformed
+
+    private void jToggleButton1_1153ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1153ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1153ActionPerformed
+
+    private void jToggleButton1_1154ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1154ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1154ActionPerformed
+
+    private void jToggleButton1_1155ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1155ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1155ActionPerformed
+
+    private void jToggleButton1_1158ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1158ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1158ActionPerformed
+
+    private void jToggleButton1_1159ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1159ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1159ActionPerformed
+
+    private void jToggleButton1_1160ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1160ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1160ActionPerformed
+
+    private void jToggleButton1_1161ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1161ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1161ActionPerformed
+
+    private void jToggleButton1_1162ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1162ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1162ActionPerformed
+
+    private void jToggleButton1_1163ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1163ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1163ActionPerformed
+
+    private void jToggleButton1_1164ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1164ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1164ActionPerformed
+
+    private void jToggleButton1_672ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_672ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_672ActionPerformed
+
+    private void jToggleButton1_673ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_673ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_673ActionPerformed
+
+    private void jToggleButton1_674ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_674ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_674ActionPerformed
+
+    private void jToggleButton1_675ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_675ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_675ActionPerformed
+
+    private void jToggleButton1_677ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_677ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_677ActionPerformed
+
+    private void jToggleButton1_676ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_676ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_676ActionPerformed
+
+    private void jToggleButton1_678ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_678ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_678ActionPerformed
+
+    private void jToggleButton1_679ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_679ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_679ActionPerformed
+
+    private void jToggleButton1_946ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_946ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_946ActionPerformed
+
+    private void jToggleButton1_1145ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1145ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1145ActionPerformed
+
+    private void jToggleButton1_1150ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1150ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1150ActionPerformed
+
+    private void jToggleButton1_1157ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1157ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1157ActionPerformed
+
+    private void jToggleButton1_1156ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1156ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1156ActionPerformed
+
+    private void jToggleButton1_953ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_953ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_953ActionPerformed
+
+    private void jToggleButton1_952ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_952ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_952ActionPerformed
+
+    private void jToggleButton1_1123ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_1123ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_1123ActionPerformed
+
+    private void jToggleButton1_817ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_817ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_817ActionPerformed
+
+    private void jToggleButton1_561ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_561ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_561ActionPerformed
+
+    private void jToggleButton1_545ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_545ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_545ActionPerformed
+
+    private void jToggleButton1_537ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_537ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_537ActionPerformed
+
+    private void jToggleButton1_536ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_536ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_536ActionPerformed
+
+    private void jToggleButton1_519ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_519ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_519ActionPerformed
+
+    private void jToggleButton1_511ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_511ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_511ActionPerformed
+
+    private void jToggleButton1_494ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_494ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_494ActionPerformed
+
+    private void jToggleButton1_493ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_493ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_493ActionPerformed
+
+    private void jToggleButton1_681ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_681ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_681ActionPerformed
+
+    private void jToggleButton1_680ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_680ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_680ActionPerformed
+
+    private void jToggleButton1_664ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_664ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_664ActionPerformed
+
+    private void jToggleButton1_663ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_663ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_663ActionPerformed
+
+    private void jToggleButton1_647ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_647ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_647ActionPerformed
+
+    private void jToggleButton1_639ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_639ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_639ActionPerformed
+
+    private void jToggleButton1_638ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1_638ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1_638ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -268,12 +6008,421 @@ public class GuiRobot extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonArchivo;
     private javax.swing.JButton jInterpretar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JToggleButton jTB1;
+    private javax.swing.JToggleButton jTB10;
+    private javax.swing.JToggleButton jTB11;
+    private javax.swing.JToggleButton jTB12;
+    private javax.swing.JToggleButton jTB13;
+    private javax.swing.JToggleButton jTB14;
+    private javax.swing.JToggleButton jTB15;
+    private javax.swing.JToggleButton jTB16;
+    private javax.swing.JToggleButton jTB17;
+    private javax.swing.JToggleButton jTB18;
+    private javax.swing.JToggleButton jTB19;
+    private javax.swing.JToggleButton jTB2;
+    private javax.swing.JToggleButton jTB20;
+    private javax.swing.JToggleButton jTB21;
+    private javax.swing.JToggleButton jTB22;
+    private javax.swing.JToggleButton jTB23;
+    private javax.swing.JToggleButton jTB24;
+    private javax.swing.JToggleButton jTB25;
+    private javax.swing.JToggleButton jTB26;
+    private javax.swing.JToggleButton jTB27;
+    private javax.swing.JToggleButton jTB28;
+    private javax.swing.JToggleButton jTB29;
+    private javax.swing.JToggleButton jTB3;
+    private javax.swing.JToggleButton jTB30;
+    private javax.swing.JToggleButton jTB31;
+    private javax.swing.JToggleButton jTB32;
+    private javax.swing.JToggleButton jTB33;
+    private javax.swing.JToggleButton jTB34;
+    private javax.swing.JToggleButton jTB35;
+    private javax.swing.JToggleButton jTB36;
+    private javax.swing.JToggleButton jTB37;
+    private javax.swing.JToggleButton jTB38;
+    private javax.swing.JToggleButton jTB39;
+    private javax.swing.JToggleButton jTB4;
+    private javax.swing.JToggleButton jTB40;
+    private javax.swing.JToggleButton jTB41;
+    private javax.swing.JToggleButton jTB42;
+    private javax.swing.JToggleButton jTB43;
+    private javax.swing.JToggleButton jTB5;
+    private javax.swing.JToggleButton jTB6;
+    private javax.swing.JToggleButton jTB7;
+    private javax.swing.JToggleButton jTB8;
+    private javax.swing.JToggleButton jTB9;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableCoordenadas;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField;
+    private javax.swing.JToggleButton jToggleButton1_1022;
+    private javax.swing.JToggleButton jToggleButton1_1023;
+    private javax.swing.JToggleButton jToggleButton1_1024;
+    private javax.swing.JToggleButton jToggleButton1_1025;
+    private javax.swing.JToggleButton jToggleButton1_1026;
+    private javax.swing.JToggleButton jToggleButton1_1027;
+    private javax.swing.JToggleButton jToggleButton1_1028;
+    private javax.swing.JToggleButton jToggleButton1_1029;
+    private javax.swing.JToggleButton jToggleButton1_1030;
+    private javax.swing.JToggleButton jToggleButton1_1031;
+    private javax.swing.JToggleButton jToggleButton1_1032;
+    private javax.swing.JToggleButton jToggleButton1_1033;
+    private javax.swing.JToggleButton jToggleButton1_1034;
+    private javax.swing.JToggleButton jToggleButton1_1035;
+    private javax.swing.JToggleButton jToggleButton1_1036;
+    private javax.swing.JToggleButton jToggleButton1_1037;
+    private javax.swing.JToggleButton jToggleButton1_1038;
+    private javax.swing.JToggleButton jToggleButton1_1039;
+    private javax.swing.JToggleButton jToggleButton1_1040;
+    private javax.swing.JToggleButton jToggleButton1_1041;
+    private javax.swing.JToggleButton jToggleButton1_1042;
+    private javax.swing.JToggleButton jToggleButton1_1043;
+    private javax.swing.JToggleButton jToggleButton1_1044;
+    private javax.swing.JToggleButton jToggleButton1_1045;
+    private javax.swing.JToggleButton jToggleButton1_1046;
+    private javax.swing.JToggleButton jToggleButton1_1047;
+    private javax.swing.JToggleButton jToggleButton1_1048;
+    private javax.swing.JToggleButton jToggleButton1_1079;
+    private javax.swing.JToggleButton jToggleButton1_1080;
+    private javax.swing.JToggleButton jToggleButton1_1081;
+    private javax.swing.JToggleButton jToggleButton1_1082;
+    private javax.swing.JToggleButton jToggleButton1_1083;
+    private javax.swing.JToggleButton jToggleButton1_1084;
+    private javax.swing.JToggleButton jToggleButton1_1085;
+    private javax.swing.JToggleButton jToggleButton1_1086;
+    private javax.swing.JToggleButton jToggleButton1_1087;
+    private javax.swing.JToggleButton jToggleButton1_1088;
+    private javax.swing.JToggleButton jToggleButton1_1089;
+    private javax.swing.JToggleButton jToggleButton1_1090;
+    private javax.swing.JToggleButton jToggleButton1_1091;
+    private javax.swing.JToggleButton jToggleButton1_1092;
+    private javax.swing.JToggleButton jToggleButton1_1093;
+    private javax.swing.JToggleButton jToggleButton1_1094;
+    private javax.swing.JToggleButton jToggleButton1_1095;
+    private javax.swing.JToggleButton jToggleButton1_1096;
+    private javax.swing.JToggleButton jToggleButton1_1097;
+    private javax.swing.JToggleButton jToggleButton1_1098;
+    private javax.swing.JToggleButton jToggleButton1_1099;
+    private javax.swing.JToggleButton jToggleButton1_1100;
+    private javax.swing.JToggleButton jToggleButton1_1102;
+    private javax.swing.JToggleButton jToggleButton1_1103;
+    private javax.swing.JToggleButton jToggleButton1_1109;
+    private javax.swing.JToggleButton jToggleButton1_1110;
+    private javax.swing.JToggleButton jToggleButton1_1111;
+    private javax.swing.JToggleButton jToggleButton1_1112;
+    private javax.swing.JToggleButton jToggleButton1_1113;
+    private javax.swing.JToggleButton jToggleButton1_1114;
+    private javax.swing.JToggleButton jToggleButton1_1115;
+    private javax.swing.JToggleButton jToggleButton1_1116;
+    private javax.swing.JToggleButton jToggleButton1_1117;
+    private javax.swing.JToggleButton jToggleButton1_1118;
+    private javax.swing.JToggleButton jToggleButton1_1119;
+    private javax.swing.JToggleButton jToggleButton1_1120;
+    private javax.swing.JToggleButton jToggleButton1_1121;
+    private javax.swing.JToggleButton jToggleButton1_1122;
+    private javax.swing.JToggleButton jToggleButton1_1123;
+    private javax.swing.JToggleButton jToggleButton1_1124;
+    private javax.swing.JToggleButton jToggleButton1_1125;
+    private javax.swing.JToggleButton jToggleButton1_1142;
+    private javax.swing.JToggleButton jToggleButton1_1143;
+    private javax.swing.JToggleButton jToggleButton1_1144;
+    private javax.swing.JToggleButton jToggleButton1_1145;
+    private javax.swing.JToggleButton jToggleButton1_1146;
+    private javax.swing.JToggleButton jToggleButton1_1147;
+    private javax.swing.JToggleButton jToggleButton1_1148;
+    private javax.swing.JToggleButton jToggleButton1_1149;
+    private javax.swing.JToggleButton jToggleButton1_1150;
+    private javax.swing.JToggleButton jToggleButton1_1151;
+    private javax.swing.JToggleButton jToggleButton1_1152;
+    private javax.swing.JToggleButton jToggleButton1_1153;
+    private javax.swing.JToggleButton jToggleButton1_1154;
+    private javax.swing.JToggleButton jToggleButton1_1155;
+    private javax.swing.JToggleButton jToggleButton1_1156;
+    private javax.swing.JToggleButton jToggleButton1_1157;
+    private javax.swing.JToggleButton jToggleButton1_1158;
+    private javax.swing.JToggleButton jToggleButton1_1159;
+    private javax.swing.JToggleButton jToggleButton1_1160;
+    private javax.swing.JToggleButton jToggleButton1_1161;
+    private javax.swing.JToggleButton jToggleButton1_1162;
+    private javax.swing.JToggleButton jToggleButton1_1163;
+    private javax.swing.JToggleButton jToggleButton1_1164;
+    private javax.swing.JToggleButton jToggleButton1_474;
+    private javax.swing.JToggleButton jToggleButton1_475;
+    private javax.swing.JToggleButton jToggleButton1_484;
+    private javax.swing.JToggleButton jToggleButton1_489;
+    private javax.swing.JToggleButton jToggleButton1_490;
+    private javax.swing.JToggleButton jToggleButton1_491;
+    private javax.swing.JToggleButton jToggleButton1_492;
+    private javax.swing.JToggleButton jToggleButton1_493;
+    private javax.swing.JToggleButton jToggleButton1_494;
+    private javax.swing.JToggleButton jToggleButton1_495;
+    private javax.swing.JToggleButton jToggleButton1_496;
+    private javax.swing.JToggleButton jToggleButton1_497;
+    private javax.swing.JToggleButton jToggleButton1_498;
+    private javax.swing.JToggleButton jToggleButton1_499;
+    private javax.swing.JToggleButton jToggleButton1_500;
+    private javax.swing.JToggleButton jToggleButton1_501;
+    private javax.swing.JToggleButton jToggleButton1_502;
+    private javax.swing.JToggleButton jToggleButton1_503;
+    private javax.swing.JToggleButton jToggleButton1_504;
+    private javax.swing.JToggleButton jToggleButton1_505;
+    private javax.swing.JToggleButton jToggleButton1_506;
+    private javax.swing.JToggleButton jToggleButton1_507;
+    private javax.swing.JToggleButton jToggleButton1_508;
+    private javax.swing.JToggleButton jToggleButton1_509;
+    private javax.swing.JToggleButton jToggleButton1_510;
+    private javax.swing.JToggleButton jToggleButton1_511;
+    private javax.swing.JToggleButton jToggleButton1_512;
+    private javax.swing.JToggleButton jToggleButton1_513;
+    private javax.swing.JToggleButton jToggleButton1_514;
+    private javax.swing.JToggleButton jToggleButton1_515;
+    private javax.swing.JToggleButton jToggleButton1_516;
+    private javax.swing.JToggleButton jToggleButton1_517;
+    private javax.swing.JToggleButton jToggleButton1_518;
+    private javax.swing.JToggleButton jToggleButton1_519;
+    private javax.swing.JToggleButton jToggleButton1_520;
+    private javax.swing.JToggleButton jToggleButton1_521;
+    private javax.swing.JToggleButton jToggleButton1_522;
+    private javax.swing.JToggleButton jToggleButton1_523;
+    private javax.swing.JToggleButton jToggleButton1_524;
+    private javax.swing.JToggleButton jToggleButton1_525;
+    private javax.swing.JToggleButton jToggleButton1_526;
+    private javax.swing.JToggleButton jToggleButton1_527;
+    private javax.swing.JToggleButton jToggleButton1_528;
+    private javax.swing.JToggleButton jToggleButton1_529;
+    private javax.swing.JToggleButton jToggleButton1_530;
+    private javax.swing.JToggleButton jToggleButton1_531;
+    private javax.swing.JToggleButton jToggleButton1_532;
+    private javax.swing.JToggleButton jToggleButton1_533;
+    private javax.swing.JToggleButton jToggleButton1_534;
+    private javax.swing.JToggleButton jToggleButton1_535;
+    private javax.swing.JToggleButton jToggleButton1_536;
+    private javax.swing.JToggleButton jToggleButton1_537;
+    private javax.swing.JToggleButton jToggleButton1_538;
+    private javax.swing.JToggleButton jToggleButton1_539;
+    private javax.swing.JToggleButton jToggleButton1_540;
+    private javax.swing.JToggleButton jToggleButton1_541;
+    private javax.swing.JToggleButton jToggleButton1_542;
+    private javax.swing.JToggleButton jToggleButton1_543;
+    private javax.swing.JToggleButton jToggleButton1_544;
+    private javax.swing.JToggleButton jToggleButton1_545;
+    private javax.swing.JToggleButton jToggleButton1_546;
+    private javax.swing.JToggleButton jToggleButton1_547;
+    private javax.swing.JToggleButton jToggleButton1_548;
+    private javax.swing.JToggleButton jToggleButton1_549;
+    private javax.swing.JToggleButton jToggleButton1_550;
+    private javax.swing.JToggleButton jToggleButton1_551;
+    private javax.swing.JToggleButton jToggleButton1_552;
+    private javax.swing.JToggleButton jToggleButton1_553;
+    private javax.swing.JToggleButton jToggleButton1_554;
+    private javax.swing.JToggleButton jToggleButton1_555;
+    private javax.swing.JToggleButton jToggleButton1_556;
+    private javax.swing.JToggleButton jToggleButton1_557;
+    private javax.swing.JToggleButton jToggleButton1_558;
+    private javax.swing.JToggleButton jToggleButton1_559;
+    private javax.swing.JToggleButton jToggleButton1_560;
+    private javax.swing.JToggleButton jToggleButton1_561;
+    private javax.swing.JToggleButton jToggleButton1_562;
+    private javax.swing.JToggleButton jToggleButton1_563;
+    private javax.swing.JToggleButton jToggleButton1_564;
+    private javax.swing.JToggleButton jToggleButton1_565;
+    private javax.swing.JToggleButton jToggleButton1_566;
+    private javax.swing.JToggleButton jToggleButton1_567;
+    private javax.swing.JToggleButton jToggleButton1_568;
+    private javax.swing.JToggleButton jToggleButton1_569;
+    private javax.swing.JToggleButton jToggleButton1_570;
+    private javax.swing.JToggleButton jToggleButton1_571;
+    private javax.swing.JToggleButton jToggleButton1_572;
+    private javax.swing.JToggleButton jToggleButton1_573;
+    private javax.swing.JToggleButton jToggleButton1_574;
+    private javax.swing.JToggleButton jToggleButton1_575;
+    private javax.swing.JToggleButton jToggleButton1_576;
+    private javax.swing.JToggleButton jToggleButton1_577;
+    private javax.swing.JToggleButton jToggleButton1_578;
+    private javax.swing.JToggleButton jToggleButton1_579;
+    private javax.swing.JToggleButton jToggleButton1_580;
+    private javax.swing.JToggleButton jToggleButton1_581;
+    private javax.swing.JToggleButton jToggleButton1_582;
+    private javax.swing.JToggleButton jToggleButton1_583;
+    private javax.swing.JToggleButton jToggleButton1_584;
+    private javax.swing.JToggleButton jToggleButton1_585;
+    private javax.swing.JToggleButton jToggleButton1_586;
+    private javax.swing.JToggleButton jToggleButton1_587;
+    private javax.swing.JToggleButton jToggleButton1_588;
+    private javax.swing.JToggleButton jToggleButton1_589;
+    private javax.swing.JToggleButton jToggleButton1_590;
+    private javax.swing.JToggleButton jToggleButton1_591;
+    private javax.swing.JToggleButton jToggleButton1_621;
+    private javax.swing.JToggleButton jToggleButton1_622;
+    private javax.swing.JToggleButton jToggleButton1_623;
+    private javax.swing.JToggleButton jToggleButton1_624;
+    private javax.swing.JToggleButton jToggleButton1_625;
+    private javax.swing.JToggleButton jToggleButton1_626;
+    private javax.swing.JToggleButton jToggleButton1_627;
+    private javax.swing.JToggleButton jToggleButton1_628;
+    private javax.swing.JToggleButton jToggleButton1_630;
+    private javax.swing.JToggleButton jToggleButton1_631;
+    private javax.swing.JToggleButton jToggleButton1_632;
+    private javax.swing.JToggleButton jToggleButton1_633;
+    private javax.swing.JToggleButton jToggleButton1_634;
+    private javax.swing.JToggleButton jToggleButton1_635;
+    private javax.swing.JToggleButton jToggleButton1_636;
+    private javax.swing.JToggleButton jToggleButton1_637;
+    private javax.swing.JToggleButton jToggleButton1_638;
+    private javax.swing.JToggleButton jToggleButton1_639;
+    private javax.swing.JToggleButton jToggleButton1_640;
+    private javax.swing.JToggleButton jToggleButton1_641;
+    private javax.swing.JToggleButton jToggleButton1_642;
+    private javax.swing.JToggleButton jToggleButton1_643;
+    private javax.swing.JToggleButton jToggleButton1_644;
+    private javax.swing.JToggleButton jToggleButton1_645;
+    private javax.swing.JToggleButton jToggleButton1_646;
+    private javax.swing.JToggleButton jToggleButton1_647;
+    private javax.swing.JToggleButton jToggleButton1_648;
+    private javax.swing.JToggleButton jToggleButton1_649;
+    private javax.swing.JToggleButton jToggleButton1_650;
+    private javax.swing.JToggleButton jToggleButton1_651;
+    private javax.swing.JToggleButton jToggleButton1_652;
+    private javax.swing.JToggleButton jToggleButton1_653;
+    private javax.swing.JToggleButton jToggleButton1_654;
+    private javax.swing.JToggleButton jToggleButton1_655;
+    private javax.swing.JToggleButton jToggleButton1_656;
+    private javax.swing.JToggleButton jToggleButton1_657;
+    private javax.swing.JToggleButton jToggleButton1_658;
+    private javax.swing.JToggleButton jToggleButton1_659;
+    private javax.swing.JToggleButton jToggleButton1_660;
+    private javax.swing.JToggleButton jToggleButton1_661;
+    private javax.swing.JToggleButton jToggleButton1_662;
+    private javax.swing.JToggleButton jToggleButton1_663;
+    private javax.swing.JToggleButton jToggleButton1_664;
+    private javax.swing.JToggleButton jToggleButton1_665;
+    private javax.swing.JToggleButton jToggleButton1_666;
+    private javax.swing.JToggleButton jToggleButton1_667;
+    private javax.swing.JToggleButton jToggleButton1_668;
+    private javax.swing.JToggleButton jToggleButton1_669;
+    private javax.swing.JToggleButton jToggleButton1_670;
+    private javax.swing.JToggleButton jToggleButton1_671;
+    private javax.swing.JToggleButton jToggleButton1_672;
+    private javax.swing.JToggleButton jToggleButton1_673;
+    private javax.swing.JToggleButton jToggleButton1_674;
+    private javax.swing.JToggleButton jToggleButton1_675;
+    private javax.swing.JToggleButton jToggleButton1_676;
+    private javax.swing.JToggleButton jToggleButton1_677;
+    private javax.swing.JToggleButton jToggleButton1_678;
+    private javax.swing.JToggleButton jToggleButton1_679;
+    private javax.swing.JToggleButton jToggleButton1_680;
+    private javax.swing.JToggleButton jToggleButton1_681;
+    private javax.swing.JToggleButton jToggleButton1_682;
+    private javax.swing.JToggleButton jToggleButton1_683;
+    private javax.swing.JToggleButton jToggleButton1_686;
+    private javax.swing.JToggleButton jToggleButton1_687;
+    private javax.swing.JToggleButton jToggleButton1_688;
+    private javax.swing.JToggleButton jToggleButton1_689;
+    private javax.swing.JToggleButton jToggleButton1_690;
+    private javax.swing.JToggleButton jToggleButton1_691;
+    private javax.swing.JToggleButton jToggleButton1_786;
+    private javax.swing.JToggleButton jToggleButton1_787;
+    private javax.swing.JToggleButton jToggleButton1_788;
+    private javax.swing.JToggleButton jToggleButton1_789;
+    private javax.swing.JToggleButton jToggleButton1_796;
+    private javax.swing.JToggleButton jToggleButton1_797;
+    private javax.swing.JToggleButton jToggleButton1_798;
+    private javax.swing.JToggleButton jToggleButton1_799;
+    private javax.swing.JToggleButton jToggleButton1_800;
+    private javax.swing.JToggleButton jToggleButton1_801;
+    private javax.swing.JToggleButton jToggleButton1_802;
+    private javax.swing.JToggleButton jToggleButton1_803;
+    private javax.swing.JToggleButton jToggleButton1_804;
+    private javax.swing.JToggleButton jToggleButton1_805;
+    private javax.swing.JToggleButton jToggleButton1_806;
+    private javax.swing.JToggleButton jToggleButton1_807;
+    private javax.swing.JToggleButton jToggleButton1_808;
+    private javax.swing.JToggleButton jToggleButton1_809;
+    private javax.swing.JToggleButton jToggleButton1_810;
+    private javax.swing.JToggleButton jToggleButton1_811;
+    private javax.swing.JToggleButton jToggleButton1_812;
+    private javax.swing.JToggleButton jToggleButton1_813;
+    private javax.swing.JToggleButton jToggleButton1_814;
+    private javax.swing.JToggleButton jToggleButton1_815;
+    private javax.swing.JToggleButton jToggleButton1_816;
+    private javax.swing.JToggleButton jToggleButton1_817;
+    private javax.swing.JToggleButton jToggleButton1_818;
+    private javax.swing.JToggleButton jToggleButton1_819;
+    private javax.swing.JToggleButton jToggleButton1_820;
+    private javax.swing.JToggleButton jToggleButton1_821;
+    private javax.swing.JToggleButton jToggleButton1_822;
+    private javax.swing.JToggleButton jToggleButton1_823;
+    private javax.swing.JToggleButton jToggleButton1_824;
+    private javax.swing.JToggleButton jToggleButton1_825;
+    private javax.swing.JToggleButton jToggleButton1_826;
+    private javax.swing.JToggleButton jToggleButton1_827;
+    private javax.swing.JToggleButton jToggleButton1_828;
+    private javax.swing.JToggleButton jToggleButton1_829;
+    private javax.swing.JToggleButton jToggleButton1_830;
+    private javax.swing.JToggleButton jToggleButton1_831;
+    private javax.swing.JToggleButton jToggleButton1_832;
+    private javax.swing.JToggleButton jToggleButton1_833;
+    private javax.swing.JToggleButton jToggleButton1_834;
+    private javax.swing.JToggleButton jToggleButton1_862;
+    private javax.swing.JToggleButton jToggleButton1_863;
+    private javax.swing.JToggleButton jToggleButton1_864;
+    private javax.swing.JToggleButton jToggleButton1_865;
+    private javax.swing.JToggleButton jToggleButton1_866;
+    private javax.swing.JToggleButton jToggleButton1_867;
+    private javax.swing.JToggleButton jToggleButton1_868;
+    private javax.swing.JToggleButton jToggleButton1_869;
+    private javax.swing.JToggleButton jToggleButton1_870;
+    private javax.swing.JToggleButton jToggleButton1_871;
+    private javax.swing.JToggleButton jToggleButton1_872;
+    private javax.swing.JToggleButton jToggleButton1_873;
+    private javax.swing.JToggleButton jToggleButton1_874;
+    private javax.swing.JToggleButton jToggleButton1_875;
+    private javax.swing.JToggleButton jToggleButton1_876;
+    private javax.swing.JToggleButton jToggleButton1_877;
+    private javax.swing.JToggleButton jToggleButton1_878;
+    private javax.swing.JToggleButton jToggleButton1_879;
+    private javax.swing.JToggleButton jToggleButton1_880;
+    private javax.swing.JToggleButton jToggleButton1_881;
+    private javax.swing.JToggleButton jToggleButton1_882;
+    private javax.swing.JToggleButton jToggleButton1_883;
+    private javax.swing.JToggleButton jToggleButton1_884;
+    private javax.swing.JToggleButton jToggleButton1_885;
+    private javax.swing.JToggleButton jToggleButton1_886;
+    private javax.swing.JToggleButton jToggleButton1_887;
+    private javax.swing.JToggleButton jToggleButton1_888;
+    private javax.swing.JToggleButton jToggleButton1_889;
+    private javax.swing.JToggleButton jToggleButton1_890;
+    private javax.swing.JToggleButton jToggleButton1_891;
+    private javax.swing.JToggleButton jToggleButton1_914;
+    private javax.swing.JToggleButton jToggleButton1_917;
+    private javax.swing.JToggleButton jToggleButton1_918;
+    private javax.swing.JToggleButton jToggleButton1_919;
+    private javax.swing.JToggleButton jToggleButton1_920;
+    private javax.swing.JToggleButton jToggleButton1_921;
+    private javax.swing.JToggleButton jToggleButton1_939;
+    private javax.swing.JToggleButton jToggleButton1_940;
+    private javax.swing.JToggleButton jToggleButton1_941;
+    private javax.swing.JToggleButton jToggleButton1_942;
+    private javax.swing.JToggleButton jToggleButton1_943;
+    private javax.swing.JToggleButton jToggleButton1_944;
+    private javax.swing.JToggleButton jToggleButton1_945;
+    private javax.swing.JToggleButton jToggleButton1_946;
+    private javax.swing.JToggleButton jToggleButton1_947;
+    private javax.swing.JToggleButton jToggleButton1_948;
+    private javax.swing.JToggleButton jToggleButton1_949;
+    private javax.swing.JToggleButton jToggleButton1_950;
+    private javax.swing.JToggleButton jToggleButton1_951;
+    private javax.swing.JToggleButton jToggleButton1_952;
+    private javax.swing.JToggleButton jToggleButton1_953;
+    private javax.swing.JToggleButton jToggleButton1_954;
     // End of variables declaration//GEN-END:variables
 }
